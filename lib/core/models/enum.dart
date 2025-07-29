@@ -4,7 +4,7 @@ enum ImageType { asset, network, file }
 
 enum FabType { normal, small, large, extended }
 
-enum AnimationType {
+enum AnimationTypes {
   fade,
   scale,
   fadeScale,

@@ -7,4 +7,6 @@ class AssetIcons {
   static const String icFacebook = '$icPath/ic_facebook.svg';
   static const String icLocation = '$icPath/ic_location.svg';
   static const String icSkype = '$icPath/ic_skype.svg';
+  static const String icTopRightLine = '$icPath/ic_top_right_line.svg';
+  static const String icTopLeft = '$icPath/ic_top_left.svg';
 }

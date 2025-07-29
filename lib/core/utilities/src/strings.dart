@@ -12,8 +12,27 @@ class AppStrings {
   static const String rememberMe = 'Remember me';
   static const String forgotPassword = 'Forgot Password';
   static const String doNotHaveAnAccount = "Don't have an account?";
-  static const String signUp = "sign up";
   static const String or = "Or";
+  static const String sendCode = 'Send Code';
+  static const String verification = 'Verification';
+  static const String weHaveSentCode = 'We have sent a code to your email';
+  static const String code = 'Code';
+  static const String resend = 'Resend';
+  static const String verify = 'Verify';
+  static const String inDot = 'In.';
+  static const String sec = 'sec';
+  static const String signUp = 'Sign Up';
+  static const String pleaseSignUpToGetStarted = 'Please sign up to get started';
+  static const String name = 'Name';
+  static const String reTypePassword = "Re-type password";
+  static const String accessLocation = "Access Location";
+  static const String foodWillAccessYourLocation = "FOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP";
+
+
+
+
+
+
 
 
 

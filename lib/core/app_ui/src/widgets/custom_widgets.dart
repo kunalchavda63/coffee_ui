@@ -1,10 +1,12 @@
 
 
+import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_check_box.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_circle_svg_icon.dart';
 
 import '../../app_ui.dart';
 
-class CustomWidgets {
+abstract class CustomWidgets {
+  const CustomWidgets._();
   // Custom Text field
   static Widget customTextField({
     String? label,
@@ -278,13 +280,13 @@ class CustomWidgets {
 
   // Custom Animation Wrapper
   static Widget customAnimationWrapper({
-    AnimationType? animationType,
+    AnimationTypes? animationType,
     Duration? duration,
     Curve? curve,
     Widget? child,
   }) {
     return CustomAnimatedWrapper(
-      animationType: animationType ?? AnimationType.fade,
+      animationType: animationType ?? AnimationTypes.fade,
       duration: duration ?? Duration(milliseconds: 800),
       curve: curve ?? Curves.easeInOut,
       child: child ?? Center(),
@@ -349,6 +351,7 @@ class CustomWidgets {
       onTap: onTap,
     );
   }
+
   static Widget customCircleSvgIcon({
     double? h,
     double? w,
@@ -360,6 +363,7 @@ class CustomWidgets {
     Color? iconColor,
     VoidCallback? onTap,
     EdgeInsets? padding,
+    BoxFit? fit
   }) {
     return CustomCircleSvgIcon(
       h: h,
@@ -372,8 +376,34 @@ class CustomWidgets {
       iconColor: iconColor,
       padding: padding,
       onTap: onTap,
+      fit: fit,
     );
 
 
+  }
+
+  static Widget customCheckBox({
+    bool? val,
+    Border? border,
+    Color? color,
+    double? boxH,
+    double? boxW,
+    BorderRadius? borderRadius,
+    Color? iconColor,
+    double? iconSize,
+
+
+}) {
+    return CustomCheckBox(
+      val: val??false,
+      border: border,
+        borderRadius: borderRadius,
+        boxH: boxH,
+        boxW: boxW,
+      color: color,
+      iconSize: iconSize,
+      iconColor: iconColor,
+
+    );
   }
 }

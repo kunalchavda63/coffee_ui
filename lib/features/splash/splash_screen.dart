@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child:CustomWidgets.customAnimationWrapper(
                 duration: Duration(seconds: 2),
                 curve: Curves.ease,
-                animationType: AnimationType.slideFromLeft,
+                animationType: AnimationTypes.slideFromLeft,
                 child: CustomWidgets.customImageView(
                   path: AssetImages.imgTopRight,
                 ),
@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child:CustomWidgets.customAnimationWrapper(
                 duration: Duration(seconds: 2),
                 curve: Curves.ease,
-                animationType: AnimationType.slideFromRight,
+                animationType: AnimationTypes.slideFromRight,
                 child: CustomWidgets.customImageView(
                   path: AssetImages.imgBottomRight,
                 ),

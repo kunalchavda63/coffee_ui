@@ -13,7 +13,7 @@ class CustomCircleSvgIcon extends StatelessWidget {
   final Color? iconColor;
   final VoidCallback? onTap;
   final EdgeInsets? padding;
-
+  final BoxFit? fit;
   const CustomCircleSvgIcon({
     super.key,
     this.h,
@@ -21,7 +21,7 @@ class CustomCircleSvgIcon extends StatelessWidget {
     this.iconColor,
     this.border,
     this.bgColor,
-    this.onTap, this.iconH, this.iconW,this.padding, this.path,
+    this.onTap, this.iconH, this.iconW,this.padding, this.path, this.fit,
   });
 
   @override
@@ -34,7 +34,7 @@ class CustomCircleSvgIcon extends StatelessWidget {
       boxShape: BoxShape.circle,
       border: border,
       color: bgColor,
-      child: SvgPicture.asset(path??AssetIcons.icApple,height: iconH,width: iconW,colorFilter: ColorFilter.mode(iconColor??AppColors.black, BlendMode.srcIn),),
+      child: SvgPicture.asset(path??AssetIcons.icApple,height: iconH,width: iconW,colorFilter: ColorFilter.mode(iconColor??AppColors.black, BlendMode.srcIn),fit: fit??BoxFit.contain,),
     );
   }
 }

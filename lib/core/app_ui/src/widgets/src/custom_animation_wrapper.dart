@@ -7,14 +7,14 @@ import '../../../../models/models.dart';
 /// Reusable animated wrapper for any widget.
 class CustomAnimatedWrapper extends StatefulWidget {
   final Widget child;
-  final AnimationType animationType;
+  final AnimationTypes animationType;
   final Duration duration;
   final Curve curve;
 
   const CustomAnimatedWrapper({
     super.key,
     required this.child,
-    this.animationType = AnimationType.fade,
+    this.animationType = AnimationTypes.fade,
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.easeInOut,
   });
@@ -50,15 +50,15 @@ class _CustomAnimatedWrapperState extends State<CustomAnimatedWrapper>
     ).animate(CurvedAnimation(parent: _controller, curve: widget.curve));
   }
 
-  Offset _getOffset(AnimationType type) {
+  Offset _getOffset(AnimationTypes type) {
     switch (type) {
-      case AnimationType.slideFromTop:
+      case AnimationTypes.slideFromTop:
         return const Offset(0, -0.9);
-      case AnimationType.slideFromBottom:
+      case AnimationTypes.slideFromBottom:
         return const Offset(-0.0, -0.8);
-      case AnimationType.slideFromLeft:
+      case AnimationTypes.slideFromLeft:
         return const Offset(-0.8, 0);
-      case AnimationType.slideFromRight:
+      case AnimationTypes.slideFromRight:
         return const Offset(0.8, 0);
       default:
         return Offset.zero;
@@ -73,21 +73,21 @@ class _CustomAnimatedWrapperState extends State<CustomAnimatedWrapper>
 
   Widget _buildAnimation() {
     switch (widget.animationType) {
-      case AnimationType.fade:
+      case AnimationTypes.fade:
         return FadeTransition(opacity: _fadeAnimation, child: widget.child);
-      case AnimationType.scale:
+      case AnimationTypes.scale:
         return ScaleTransition(scale: _scaleAnimation, child: widget.child);
-      case AnimationType.fadeScale:
+      case AnimationTypes.fadeScale:
         return FadeTransition(
           opacity: _fadeAnimation,
           child: ScaleTransition(scale: _scaleAnimation, child: widget.child),
         );
-      case AnimationType.slideFromTop:
-      case AnimationType.slideFromBottom:
-      case AnimationType.slideFromLeft:
-      case AnimationType.slideFromRight:
+      case AnimationTypes.slideFromTop:
+      case AnimationTypes.slideFromBottom:
+      case AnimationTypes.slideFromLeft:
+      case AnimationTypes.slideFromRight:
         return SlideTransition(position: _slideAnimation, child: widget.child);
-      case AnimationType.none:
+      case AnimationTypes.none:
         return widget.child;
     }
   }

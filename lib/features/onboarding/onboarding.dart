@@ -15,10 +15,10 @@ class Onboarding extends StatelessWidget {
   final PageController _controller = PageController();
 
   final List<OnboardingModel> _onboardingData = [
-    OnboardingModel(AppStrings.allUFavorites, AppStrings.getAllYourLoved),
-    OnboardingModel(AppStrings.allUFavorites, AppStrings.getAllYourLoved),
-    OnboardingModel(AppStrings.orderFromChooseChef, AppStrings.getAllYourLoved),
-    OnboardingModel(AppStrings.freeDeliveryOffers, AppStrings.getAllYourLoved),
+    OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved),
+    OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved),
+    OnboardingModel(title:AppStrings.orderFromChooseChef,subTitle: AppStrings.getAllYourLoved),
+    OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved),
   ];
 
   Widget _buildPage({
@@ -111,6 +111,10 @@ class Onboarding extends StatelessWidget {
                     :
                 AppStrings.next.toUpperCase(),
                 onTap: (){
+                  if(state.currentPage!=3){
+                    logger.i('Current Page : ${state.currentPage+1}');
+                    _controller.animateToPage(state.currentPage+1, duration: Duration(milliseconds: 500), curve:Curves.easeInOut);
+                  }
                   if(state.currentPage==3){
                     logger.i('Pushing Login Screen');
                     getIt<AppRouter>().pushReplacement(LoginScreen());
@@ -140,8 +144,11 @@ class Onboarding extends StatelessWidget {
 class OnboardingModel {
   final String title;
   final String subTitle;
-  OnboardingModel(
-      this.title,
-      this.subTitle,
+  final String? imagePath;
+  OnboardingModel({
+    required this.title,
+    required this.subTitle,
+    this.imagePath,
+  }
       );
 }
