@@ -27,6 +27,22 @@ class AppStrings {
   static const String reTypePassword = "Re-type password";
   static const String accessLocation = "Access Location";
   static const String foodWillAccessYourLocation = "FOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP";
+  static const String deliverTo = 'Deliver to';
+  static const String hey = 'Hey';
+  static const String goodAfternoon = 'Good Afternoon';
+  static const String search = 'Search';
+  static const String dishes = 'Dishes';
+  static const String restaurants = 'restaurants';
+  static const String all = 'All';
+  static const String hotDog = 'Hot Dog';
+  static const String burger = 'Burger';
+  static const String openRestaurants = 'Open Restaurants';
+  static const String seeAll = 'See All';
+  static const String free = 'Free';
+  static const String min = 'min';
+
+
+
 
 
 

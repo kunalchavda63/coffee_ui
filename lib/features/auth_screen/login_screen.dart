@@ -2,9 +2,13 @@ import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
+import 'package:coffe_ui/features/auth_screen/access_location_screen.dart';
 import 'package:coffe_ui/features/auth_screen/forgot_screen.dart';
 import 'package:coffe_ui/features/auth_screen/sign_up_screen.dart';
+import 'package:coffe_ui/features/screens/home_screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    logger.i("Login SCreen Dispose : CoffeUI");
+    logger.i("Login Screen Dispose : CoffeeUI");
     super.dispose();
   }
 
@@ -68,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               )),
           Positioned(
-            right: 0,
+              right: 0,
               child: CustomWidgets.customAnimationWrapper(
                 duration: Duration(
                     seconds: 2
@@ -76,8 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 curve: Curves.easeInOut,
                 animationType: AnimationTypes.slideFromTop,
                 child: SvgPicture.asset(
-                    AssetIcons.icTopRightLine,
-                  colorFilter: ColorFilter.mode(AppColors.hex1e1e,BlendMode.srcIn),
+                  AssetIcons.icTopRightLine,
+                  colorFilter: ColorFilter.mode(AppColors.hex5e61,BlendMode.srcIn),
                 ),
               )),
 
@@ -152,6 +156,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ).padBottom(29.r),
                     CustomWidgets.customButton(
+                      onTap: ()async{
+                        LocationPermission permission = await Geolocator.checkPermission();
+                        if(permission == LocationPermission.denied || permission==LocationPermission.deniedForever){
+                          getIt<AppRouter>().push(AccessLocationScreen());
+                        }
+                        else if(permission == LocationPermission.always || permission == LocationPermission.whileInUse){
+                          getIt<AppRouter>().pushReplacement(HomeScreens());
+                          logger.i("Pushing : ${getIt<AppRouter>().navigatorKey.currentWidget}");
+
+                        }
+                        else{
+                          return;
+                        }
+                      },
                       label: AppStrings.logIn
                     ).padBottom(38.r),
                     Row(

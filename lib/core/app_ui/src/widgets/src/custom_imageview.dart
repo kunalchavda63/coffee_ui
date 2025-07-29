@@ -57,7 +57,14 @@ class CustomImageView extends StatelessWidget {
               ),
             );
           },
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+          errorWidget: (context, url, error) {
+            return CustomWidgets.customImageView(
+              path: AssetImages.imgError,
+              height: height,
+              width: width,
+              fit: BoxFit.cover
+            );
+          },
         );
 
       case ImageType.file:

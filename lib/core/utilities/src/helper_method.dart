@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 Future<bool> takeLocationPermission() async {
   LocationPermission permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
-    await Geolocator.requestPermission();
+   permission =  await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
       log('Location Permission denied by user');
       return false;

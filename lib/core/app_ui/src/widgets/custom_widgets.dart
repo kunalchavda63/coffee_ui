@@ -294,8 +294,8 @@ abstract class CustomWidgets {
   }
 
   // Custom Button
-  static Widget customButton({String? label, VoidCallback? onTap}) {
-    return CustomButton(label: label, onTap: onTap);
+  static Widget customButton({String? label, VoidCallback? onTap,Widget? icon}) {
+    return CustomButton(label: label, onTap: onTap,icon: icon);
   }
 
   // static Widget customChatCard({UserModel? user,VoidCallback? onTap}) {

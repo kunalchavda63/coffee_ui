@@ -14,24 +14,35 @@ class Onboarding extends StatelessWidget {
 
   final PageController _controller = PageController();
 
-  final List<OnboardingModel> _onboardingData = [
-    OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved),
-    OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved),
-    OnboardingModel(title:AppStrings.orderFromChooseChef,subTitle: AppStrings.getAllYourLoved),
-    OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved),
+  static final List<OnboardingModel> _onboardingData = [
+    OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/hand-drawn-people-taking-pictures-food-illustration_23-2150512066.jpg'),
+    OnboardingModel(title:AppStrings.orderFromChooseChef,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cooking-school-isometric-composition-with-delicious-dishes-ingredients-character-chef-3d_1284-63383.jpg'),
+    OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cloud-kitchen-service-concept-with-package-delivery-symbols-isometric-vector-illustration_98292-9326.jpg'),
   ];
 
   Widget _buildPage({
     required String title,
     required String subtitle,
+    String? imagePath,
   }) {
     return Column(
       children: [
         Center(
-          child: CustomWidgets.customContainer(
-            h: 292.r,
-            color: AppColors.hex98ab,
-            borderRadius: BorderRadius.circular(12.r),
+          child:CustomWidgets.customAnimationWrapper(
+              duration: Duration(milliseconds: 800),
+              animationType: AnimationTypes.fade,
+              curve: Curves.linear,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: CustomWidgets.customImageView(
+                    height: 292.r,
+                    width: 292.r,
+                  path: imagePath,
+                  sourceType: ImageType.network,
+                  fit: BoxFit.cover
+                
+                            ),
+              )
           ),
         ).padTop(114.r).padH(60.r).padBottom(63.r),
         CustomWidgets.customText(
@@ -98,6 +109,7 @@ class Onboarding extends StatelessWidget {
                       return _buildPage(
                         title: data.title,
                         subtitle: data.subTitle,
+                        imagePath: data.imagePath
                       );
                     },
                   )
@@ -106,16 +118,16 @@ class Onboarding extends StatelessWidget {
 
               CustomWidgets
                   .customButton(
-                label:state.currentPage==3 ?
+                label:state.currentPage==2 ?
                 'GET STARTED'
                     :
                 AppStrings.next.toUpperCase(),
                 onTap: (){
-                  if(state.currentPage!=3){
+                  if(state.currentPage!=2){
                     logger.i('Current Page : ${state.currentPage+1}');
                     _controller.animateToPage(state.currentPage+1, duration: Duration(milliseconds: 500), curve:Curves.easeInOut);
                   }
-                  if(state.currentPage==3){
+                  if(state.currentPage==2){
                     logger.i('Pushing Login Screen');
                     getIt<AppRouter>().pushReplacement(LoginScreen());
                   }
@@ -126,12 +138,12 @@ class Onboarding extends StatelessWidget {
               InkWell(
                   onTap: (){
                     logger.d('User Skip ');
-                    if(state.currentPage!=3) {
+                    if(state.currentPage!=2) {
                       _controller.animateToPage(3, duration:const Duration(milliseconds: 500), curve: Curves.easeInOut);
                     }
                   },
 
-                  child: CustomWidgets.customText(data: state.currentPage<3?AppStrings.skip:'',style: BaseStyle.s16w500.c(AppColors.hex6469)).padBottom(40.r))
+                  child: CustomWidgets.customText(data: state.currentPage<2?AppStrings.skip:'',style: BaseStyle.s16w500.c(AppColors.hex6469)).padBottom(40.r))
             ],
           );
         }
