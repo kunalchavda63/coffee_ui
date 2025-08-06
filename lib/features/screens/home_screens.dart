@@ -1,10 +1,25 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/utilities/src/extensions/logger/logger.dart';
 import 'package:coffe_ui/core/utilities/src/strings.dart';
+import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
+import 'package:coffe_ui/features/screens/bloc/select_categories_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomeScreens extends StatelessWidget {
+class HomeScreens extends StatefulWidget {
   const HomeScreens({super.key});
 
+  @override
+  State<HomeScreens> createState() => _HomeScreensState();
+}
+
+class _HomeScreensState extends State<HomeScreens> {
+  final List<CategoriesModel> categories = [
+    CategoriesModel(title: AppStrings.all),
+    CategoriesModel(title: AppStrings.hotDog),
+    CategoriesModel(title: AppStrings.burger),
+    CategoriesModel(title: 'Pizza'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +98,7 @@ class HomeScreens extends StatelessWidget {
                   style: TextStyle().s(16.sp).c(AppColors.hex1e1d).family(FontFamily.sen).w(700)
               ),
             ],
-          ).padBottom(16.r),
+          ).padBottom(16.r).padH(24.r),
           CustomWidgets.customTextField(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r),borderSide: BorderSide(color: AppColors.transparent)),
             filled: true,
@@ -92,12 +107,12 @@ class HomeScreens extends StatelessWidget {
             prefixIcon: SvgPicture.asset(AssetIcons.icSearch).padLeft(20.r).padRight(12.r),
             hintText: "${AppStrings.search} ${AppStrings.dishes.toLowerCase()}, ${AppStrings.restaurants.toLowerCase()}",
             hintStyle: BaseStyle.s14w500.c(AppColors.hex6767).family(FontFamily.sen).w(400)
-          ).padBottom(32.r),
+          ).padBottom(32.r).padH(24.r),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomWidgets.customText(
-                  data: 'All Categories',
+                  data: AppStrings.allCategories,
                   style: BaseStyle.s20w400.c(AppColors.hex3234)
               ),
               Row(
@@ -110,53 +125,82 @@ class HomeScreens extends StatelessWidget {
                 ],
               )
             ],
-          ).padBottom(20.r),
-          CustomWidgets.customContainer(
+          ).padBottom(20.r).padH(24.r),
+          BlocBuilder<SelectCategoriesCubit,SelectCategoriesState>(
+            builder: (context,state){
+              logger.i('Select : ${state.currentIndex+1}');
+              return  SizedBox(
+                height: 60.r,
+                child: ListView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 24.r),
+                        shrinkWrap: true,
+                        itemCount: 20,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context,index){
+                          return  smallSelectWidgets(
+                                index==state.currentIndex,
+                                (){
+                                  context.read<SelectCategoriesCubit>().updateIndex(index);
+                                }
 
-            h: 60.r,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 20,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context,index){
-                        return smallSelectWidgets(index==0).padRight(7.r);
-                      }),
+                            ).padRight(7.r
+                          );
+                        },
+                  ),
+              );
+
+            },
           )
 
-          
+
         ],
-      ).padH(24.r),
+      ),
 
     );
   }
+
   Widget smallSelectWidgets(
-      bool isSelected
+      bool isSelected,
+      VoidCallback onTap
       ){
-    return CustomWidgets.customContainer(
-      h: 60.r,
-      borderRadius: BorderRadius.circular(39.r),
-      color:isSelected?AppColors.hexFfd2:AppColors.white,
-      child: Row(
-        children: [
-          CustomWidgets.customAnimationWrapper(
-            animationType: AnimationTypes.fade,
-            duration: Duration(milliseconds: 800),
-            curve: Curves.linear,
-            child: CustomWidgets.customContainer(
-              h: 44.r,
-              w: 44.r,
-              color: AppColors.hex98a8,
-              boxShape: BoxShape.circle
-            ),
-          ).padRight(12.r),
-          CustomWidgets.customText(
-            data: AppStrings.all,
-            style: BaseStyle.s14w500.c(AppColors.hex3234).w(700).family(FontFamily.sen)
-          )
-        ],
-      ).padLeft(8.r).padRight(18.r)
+    return CustomWidgets.customAnimationWrapper(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.linearToEaseOut,
+      animationType: AnimationTypes.fade,
+      child: CustomWidgets.customContainer(
+        onTap: onTap,
+        h: 60.r,
+        borderRadius: BorderRadius.circular(39.r),
+        color:isSelected?AppColors.hexFfd2:AppColors.white,
+          child: Row(
+          children: [
+            CustomWidgets.customAnimationWrapper(
+              animationType: AnimationTypes.fade,
+              duration: Duration(milliseconds: 800),
+              curve: Curves.linear,
+              child: CustomWidgets.customContainer(
+                h: 44.r,
+                w: 44.r,
+                color: AppColors.hex98a8,
+                boxShape: BoxShape.circle
+              ),
+            ).padRight(12.r),
+            CustomWidgets.customText(
+              data: AppStrings.all,
+              style: BaseStyle.s14w500.c(AppColors.hex3234).w(700).family(FontFamily.sen)
+            )
+          ],
+        ).padLeft(8.r).padRight(18.r)
 
 
+      ),
     );
   }
+}
+
+
+class CategoriesModel {
+  final String title;
+  final String? imagePath;
+  CategoriesModel({required this.title,this.imagePath});
 }

@@ -1,7 +1,11 @@
 import 'dart:developer';
 
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
+import 'package:coffe_ui/features/screens/home_screens.dart';
+
+import '../../core/services/repositories/service_locator.dart';
 
 class AccessLocationScreen extends StatelessWidget {
   const AccessLocationScreen({super.key});
@@ -41,6 +45,8 @@ class AccessLocationScreen extends StatelessWidget {
           final position = await determinePosition();
           final places = await getListPlace(position);
           log(places.toString());
+          getIt<AppRouter>().pushReplacement(HomeScreens());
+
           } catch(e,s){
             logger.e(e);
             logger.e(s);

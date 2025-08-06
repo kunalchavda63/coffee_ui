@@ -1,6 +1,7 @@
 
 
 import 'package:coffe_ui/features/onboarding/bloc/onboarding_bloc.dart';
+import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
 import 'package:coffe_ui/features/splash/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,8 @@ void main()async{
   await setupServiceLocator();
   runApp( MultiBlocProvider(
       providers: [
-        BlocProvider<OnboardingBloc>(create:(_)=>OnboardingBloc())
+        BlocProvider<OnboardingBloc>(create:(_)=>OnboardingBloc()),
+        BlocProvider<SelectCategoriesCubit>(create:(_)=>SelectCategoriesCubit())
       ],
       child: MyApp()));
 }

@@ -40,6 +40,7 @@ class AppStrings {
   static const String seeAll = 'See All';
   static const String free = 'Free';
   static const String min = 'min';
+  static const String allCategories = 'All Categories';
 
 
 
