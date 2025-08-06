@@ -23,12 +23,15 @@ class AppColors {
   static const Color hexEcf0 = Color(0XFFECF0F4);
   static const Color hexFc6e = Color(0XFFFC6E2A);
   static const Color hex6767 = Color(0XFF676767);
-  static const Color hex181C = Color(0XFF18C12E);
+  static const Color hex181C = Color(0XFF181C2E);
   static const Color hex1e1d = Color(0XFF1E1D1D);
   static const Color hexF6f6 = Color(0XFFF6F6F6);
   static const Color hex3333 = Color(0XFF333333);
   static const Color hexFfd2 = Color(0XFFFFD27C);
   static const Color hex969615 = Color(0X2696969A);
+  static const Color hex9696 = Color(0XFF96969A);
+  static const Color hexC4c4 = Color(0XFFC4C4C4);
+
 
 
 }
