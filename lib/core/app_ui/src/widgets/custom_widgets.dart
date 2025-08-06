@@ -76,6 +76,7 @@ abstract class CustomWidgets {
     Clip? clip,
     String? path,
     Gradient? gradient,
+    BoxDecoration? foregroundDecoration
   }) {
     return CustomContainer(
       h: h,
@@ -94,6 +95,7 @@ abstract class CustomWidgets {
       blendMode: blendMode,
       clipBehaviour: clip,
       path: path,
+      foregroundDecoration: foregroundDecoration,
       child: child,
     );
   }

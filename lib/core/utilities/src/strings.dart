@@ -41,6 +41,7 @@ class AppStrings {
   static const String free = 'Free';
   static const String min = 'min';
   static const String allCategories = 'All Categories';
+  static const String pizza = 'Pizza';
 
 
 

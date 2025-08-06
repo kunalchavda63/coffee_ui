@@ -135,14 +135,12 @@ class Onboarding extends StatelessWidget {
               )
                   .padH(24.r)
                   .padBottom(16.r),
-              InkWell(
+              GestureDetector(
                   onTap: (){
-                    logger.d('User Skip ');
-                    if(state.currentPage!=2) {
-                      _controller.animateToPage(3, duration:const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                    }
-                  },
+                    logger.i(' User Skip');
+                    _controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
+                  },
                   child: CustomWidgets.customText(data: state.currentPage<2?AppStrings.skip:'',style: BaseStyle.s16w500.c(AppColors.hex6469)).padBottom(40.r))
             ],
           );

@@ -1,3 +1,4 @@
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -18,6 +19,8 @@ class CustomContainer extends StatelessWidget {
   final Clip? clipBehaviour;
   final String? path;
   final Gradient? gradient;
+  final BoxDecoration? foregroundDecoration;
+
 
 
   const CustomContainer({
@@ -38,7 +41,8 @@ class CustomContainer extends StatelessWidget {
     this.path,
     this.constraints,
     this.margin,
-    this.gradient
+    this.gradient,
+    this.foregroundDecoration
   });
 
   @override
@@ -46,6 +50,7 @@ class CustomContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        foregroundDecoration: foregroundDecoration,
         height: h,
         width: w,
         alignment: alignment,
@@ -54,6 +59,8 @@ class CustomContainer extends StatelessWidget {
         constraints: constraints,
         decoration: BoxDecoration(
           gradient: gradient,
+
+
           backgroundBlendMode: blendMode,
           image:
               path != null

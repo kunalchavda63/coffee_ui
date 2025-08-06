@@ -56,4 +56,9 @@ class BaseStyle {
   .w(900)
   .c(AppColors.hex3234);
 
+  static TextStyle s18w400 = TextStyle()
+  .family(FontFamily.sen)
+  .s(18)
+  .w(400);
+
 }
