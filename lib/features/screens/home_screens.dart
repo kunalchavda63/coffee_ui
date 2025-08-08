@@ -8,7 +8,6 @@ import 'package:coffe_ui/features/screens/bloc/select_categories_state.dart';
 import 'package:coffe_ui/features/screens/search_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../core/utilities/src/extensions/logger/logger.dart';
 
 class HomeScreens extends StatefulWidget {
   const HomeScreens({super.key});

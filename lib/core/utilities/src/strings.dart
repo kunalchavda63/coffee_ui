@@ -42,6 +42,14 @@ class AppStrings {
   static const String min = 'min';
   static const String allCategories = 'All Categories';
   static const String pizza = 'Pizza';
+  static const String recentKeyword = 'Recent Keywords';
+  static const String suggestRestaurants = 'Suggest Restaurants';
+  static const String popularFastFood = 'Popular Fast Food';
+  static const String popularBurgers = 'Popular Burgers';
+
+
+
+
 
 
 

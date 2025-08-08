@@ -25,6 +25,8 @@ class CustomTextField extends StatefulWidget {
   final String? initialValue;
   final Color? cursorColor;
   final bool? obscureText;
+  final  Function(String? val)? onChanged;
+
 
   const CustomTextField({
     super.key,
@@ -49,7 +51,7 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.initialValue,
     this.cursorColor,
-    this.obscureText = false
+    this.obscureText = false, this.onChanged
   });
 
   @override
@@ -66,7 +68,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
   @override
   Widget build(BuildContext context) {
+
     return TextFormField(
+      onChanged: widget.onChanged,
       maxLengthEnforcement: MaxLengthEnforcement.none,
       inputFormatters: [],
       textCapitalization: widget.textCapitalization ?? TextCapitalization.none,

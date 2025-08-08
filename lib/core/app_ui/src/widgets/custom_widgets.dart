@@ -30,7 +30,9 @@ abstract class CustomWidgets {
     String? initialValue,
     int? maxLength,
     Color? cursorColor,
-    bool? obscureText
+    bool? obscureText,
+    Function(String? val)? onChanged
+
   }) {
     return CustomTextField(
       cursorColor: cursorColor,
@@ -54,6 +56,7 @@ abstract class CustomWidgets {
       style: style,
       maxLength: maxLength,
       obscureText: obscureText,
+      onChanged: onChanged,
     );
   }
 

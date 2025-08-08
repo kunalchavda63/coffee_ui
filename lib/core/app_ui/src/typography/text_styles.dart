@@ -61,4 +61,9 @@ class BaseStyle {
   .s(18)
   .w(400);
 
+  static TextStyle s16w400 = TextStyle()
+  .family(FontFamily.sen)
+  .s(16.sp)
+  .w(400);
+
 }
