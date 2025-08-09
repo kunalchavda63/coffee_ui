@@ -4,6 +4,7 @@ class AppColors {
   static const Color white = Color(0XFFFFFFFF);
   static const Color white20 = Color(0X33FFFFFF);
   static const Color black = Color(0XFF000000);
+  static const Color black04 = Color(0X0A000000);
   static const Color transparent = Color(0X00000000);
   static const Color hex3234 = Color(0XFF32343E);
   static const Color hex6469 = Color(0XFF646982);
@@ -35,6 +36,8 @@ class AppColors {
   static const Color hexEded = Color(0XFFEDEDED);
   static const Color hexEbeb = Color(0XFFEBEBEB);
   static const Color hexF58d = Color(0XFFF58D10);
+  static const Color hexE9e9 = Color(0XFFE9E9E9);
+  static const Color hexFfeb = Color(0XFFFFEBE4);
 
 
 

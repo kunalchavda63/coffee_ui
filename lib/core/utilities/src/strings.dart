@@ -46,6 +46,14 @@ class AppStrings {
   static const String suggestRestaurants = 'Suggest Restaurants';
   static const String popularFastFood = 'Popular Fast Food';
   static const String popularBurgers = 'Popular Burgers';
+  static const String details = 'Details';
+  static const String size = 'Size';
+  static const String addToCart = 'Add to cart';
+  static const String ingridents = 'Ingridents';
+
+
+
+
 
 
 

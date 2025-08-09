@@ -1,4 +1,7 @@
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post.dart';
+import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/repositories/service_locator.dart';
+import 'package:coffe_ui/features/screens/add_cart_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/app_ui/app_ui.dart';
@@ -110,6 +113,10 @@ class FoodScreen extends StatelessWidget {
                         ),
                         CustomWidgets.customCircleSvgIcon(
                           bgColor: AppColors.hexF58d,
+                          onTap: (){
+                            logger.i('Pushing : Details Screen');
+                            getIt<AppRouter>().push(AddCartScreen());
+                          },
                           path: AssetIcons.icAdd,
                           h: 30.r,
                           w: 30.r,

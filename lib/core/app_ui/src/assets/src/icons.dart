@@ -20,4 +20,9 @@ class AssetIcons {
   static const String icCross = '$icPath/ic_cross.svg';
   static const String icFilter = '$icPath/ic_filter.svg';
   static const String icAdd = '$icPath/ic_add.svg';
+  static const String icChicken = '$icPath/ic_chicken.svg';
+  static const String icGarlic = '$icPath/ic_garlic.svg';
+  static const String icSalt = '$icPath/ic_salt.svg';
+  static const String icOnion = '$icPath/ic_onion.svg';
+  static const String icMinus = '$icPath/ic_minimize.svg';
 }

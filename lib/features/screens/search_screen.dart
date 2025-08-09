@@ -67,7 +67,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     boxShape: BoxShape.circle,
                     child: CustomWidgets.customText(
                       data: '2',
-
                       style: BaseStyle.s16w500
                           .c(AppColors.white)
                           .family(FontFamily.sen),
