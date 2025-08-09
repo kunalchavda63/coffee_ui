@@ -1,7 +1,10 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/repositories/service_locator.dart';
+import 'package:coffe_ui/core/utilities/utils.dart';
+import 'package:coffe_ui/features/screens/food_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../core/utilities/src/strings.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -127,6 +130,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemCount: recentKeyword.length,
                   itemBuilder: (context,index){
                     return CustomWidgets.customContainer(
+                      onTap: (){
+                        logger.i('Pushing : ${getIt<AppRouter>().navigatorKey.currentWidget}');
+                        getIt<AppRouter>().push(FoodScreen());
+                      },
                       h: 46.r,
                       borderRadius: BorderRadius.circular(33.r),
                       padding: EdgeInsets.symmetric(horizontal: 20.r),

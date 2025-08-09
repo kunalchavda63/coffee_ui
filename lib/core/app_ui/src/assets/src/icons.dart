@@ -18,4 +18,6 @@ class AssetIcons {
   static const String icTruck = '$icPath/ic_truck.svg';
   static const String icClock = '$icPath/ic_clock.svg';
   static const String icCross = '$icPath/ic_cross.svg';
+  static const String icFilter = '$icPath/ic_filter.svg';
+  static const String icAdd = '$icPath/ic_add.svg';
 }
