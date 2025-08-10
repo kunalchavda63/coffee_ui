@@ -50,6 +50,18 @@ class AppStrings {
   static const String size = 'Size';
   static const String addToCart = 'Add to cart';
   static const String ingridents = 'Ingridents';
+  static const String emailCannotBeEmpty = 'Email Cannot be empty';
+  static const String enterAValidEmail = 'Enter a valid email';
+  static const String passwordCannotBeEmpty = 'Password Cannot be empty';
+  static const String passwordMustBeAtLest6Characters = 'Password Must Be AtLeast 6 Characters';
+  static const String nameCannotBeEmpty = 'Name Cannot BE Empty';
+  static const String nameCannotBeAtLeast2Characters = 'Name Cannot Be At Least 2 Characters';
+  static const String pleaseConfirmUPassword = 'Please Confirm Your Password';
+  static const String passwordDoNotMatch = 'Password Do not Match';
+
+
+
+
 
 
 

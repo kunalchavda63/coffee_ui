@@ -141,7 +141,7 @@ class FoodScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context,index){
-              return RestaurantPost();
+              return RestaurantPost().padBottom(28.r);
             }
             )
         

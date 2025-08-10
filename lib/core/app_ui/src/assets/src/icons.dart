@@ -25,4 +25,5 @@ class AssetIcons {
   static const String icSalt = '$icPath/ic_salt.svg';
   static const String icOnion = '$icPath/ic_onion.svg';
   static const String icMinus = '$icPath/ic_minimize.svg';
+  static const String icHeart = '$icPath/ic_heart.svg';
 }

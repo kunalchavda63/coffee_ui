@@ -14,3 +14,6 @@ enum AnimationTypes {
   slideFromRight,
   none,
 }
+
+enum Role { user
+  , admin}

@@ -1,5 +1,8 @@
 
 
+import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
+import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_bloc.dart';
+import 'package:coffe_ui/features/auth_screen/bloc/sign_up_bloc/sign_up_bloc.dart';
 import 'package:coffe_ui/features/onboarding/bloc/onboarding_bloc.dart';
 import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
 import 'package:coffe_ui/features/splash/splash_screen.dart';
@@ -14,7 +17,9 @@ void main()async{
   runApp( MultiBlocProvider(
       providers: [
         BlocProvider<OnboardingBloc>(create:(_)=>OnboardingBloc()),
-        BlocProvider<SelectCategoriesCubit>(create:(_)=>SelectCategoriesCubit())
+        BlocProvider<SelectCategoriesCubit>(create:(_)=>SelectCategoriesCubit()),
+        BlocProvider<LoginBloc>(create: (_) => LoginBloc(authRepository: AuthRepository())),
+        BlocProvider<SignUpBloc>(create: (_) => SignUpBloc(authRepository: AuthRepository())),
       ],
       child: MyApp()));
 }

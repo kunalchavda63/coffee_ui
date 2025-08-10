@@ -42,7 +42,18 @@ class _AddCartScreenState extends State<AddCartScreen> {
             Center(
               child: CustomWidgets.customContainer(
                 h: 184.r,
+                w: MediaQuery.of(context).size.width,
                 color: AppColors.hex98a8,
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(right: 20.r,bottom: 20.r),
+                child: CustomWidgets.customCircleSvgIcon(
+                  path: AssetIcons.icHeart,
+                  bgColor: AppColors.white20,
+                  h: 37.r,
+                  w: 37.r,
+                  fit: BoxFit.contain,
+                  iconColor: AppColors.white
+                ),
                 borderRadius: BorderRadius.circular(32.r),
               ).padTop(32.r).padBottom(24.r),
             ).padH(24.r),

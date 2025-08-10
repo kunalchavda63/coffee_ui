@@ -1,5 +1,6 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/network/base/app_dio_manager.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/auth_screen/login_screen.dart';
@@ -9,16 +10,40 @@ import 'bloc/onboarding_bloc.dart';
 import 'bloc/onboarding_event.dart';
 import 'bloc/onboarding_state.dart';
 
-class Onboarding extends StatelessWidget {
+class Onboarding extends StatefulWidget {
   Onboarding({super.key});
-
-  final PageController _controller = PageController();
 
   static final List<OnboardingModel> _onboardingData = [
     OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/hand-drawn-people-taking-pictures-food-illustration_23-2150512066.jpg'),
     OnboardingModel(title:AppStrings.orderFromChooseChef,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cooking-school-isometric-composition-with-delicious-dishes-ingredients-character-chef-3d_1284-63383.jpg'),
     OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cloud-kitchen-service-concept-with-package-delivery-symbols-isometric-vector-illustration_98292-9326.jpg'),
   ];
+
+  @override
+  State<Onboarding> createState() => _OnboardingState();
+}
+
+class _OnboardingState extends State<Onboarding> {
+  @override
+  void initState() {
+    super.initState();
+    _loadLocalData();
+  }
+
+  Future<void> _loadLocalData() async {
+    try {
+      var data = await fetchLocalData();
+      if (data.success) {
+        logger.i(data.data);
+      } else {
+        logger.e(data.message);
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  final PageController _controller = PageController();
 
   Widget _buildPage({
     required String title,
@@ -40,7 +65,7 @@ class Onboarding extends StatelessWidget {
                   path: imagePath,
                   sourceType: ImageType.network,
                   fit: BoxFit.cover
-                
+
                             ),
               )
           ),
@@ -66,7 +91,7 @@ class Onboarding extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        _onboardingData.length,
+        Onboarding._onboardingData.length,
             (index) => AnimatedContainer(
           duration: Duration(milliseconds: 300),
           margin: EdgeInsets.symmetric(horizontal: 4.r),
@@ -95,17 +120,17 @@ class Onboarding extends StatelessWidget {
             children: [
               Expanded(
                   child: PageView.builder(
-                    
+
                     padEnds: false,
                     pageSnapping: true,
                     controller: _controller,
-                    itemCount: _onboardingData.length,
+                    itemCount: Onboarding._onboardingData.length,
                     onPageChanged: (index) {
                       context.read<OnboardingBloc>().add(
                           PageChangedEvent(index));
                     },
                     itemBuilder: (context, index) {
-                      final data = _onboardingData[index];
+                      final data = Onboarding._onboardingData[index];
                       return _buildPage(
                         title: data.title,
                         subtitle: data.subTitle,

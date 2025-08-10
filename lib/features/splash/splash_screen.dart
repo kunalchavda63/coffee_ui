@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
+import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/onboarding/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,6 +14,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setStatusBarDarkStyle();
+  }
+
   @override
   void initState() {
     super.initState();
