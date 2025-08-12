@@ -7,9 +7,9 @@ import '../network/constants/app_endpoint.dart';
 
 class AuthRepository extends BaseRepository{
 
-  Future<ApiResponse<Map<String,dynamic>>> login(String email,String password) {
+  Future<ApiResponse<Map<String,dynamic>>> login(String email,String password)async {
     return api.post<Map<String,dynamic>>(
-        "${ApiEndPoints.emulators}/login",
+        "${ApiEndPoints.emulators}/auth/login",
         {
           "email": email,
           "password": password

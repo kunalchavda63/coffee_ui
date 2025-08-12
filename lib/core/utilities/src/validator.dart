@@ -15,7 +15,7 @@ String? validatePassword(String? value) {
   if (value == null || value.isEmpty) {
     return AppStrings.passwordCannotBeEmpty;
   }
-  if (value.length < 6) {
+  if (value.length < 4) {
     return AppStrings.passwordMustBeAtLest6Characters;
   }
   return null;

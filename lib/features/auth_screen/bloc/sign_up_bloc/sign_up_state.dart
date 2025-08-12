@@ -1,4 +1,3 @@
-import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
 
 abstract class SignUpState {}
 

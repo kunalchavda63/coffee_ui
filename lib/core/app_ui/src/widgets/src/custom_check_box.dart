@@ -11,9 +11,11 @@ class CustomCheckBox extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Color? iconColor;
   final double? iconSize;
+  final VoidCallback? onTap;
 
   const CustomCheckBox({
     super.key,
+    this.onTap,
     this.val = false,
     this.border,
     this.color,
@@ -26,15 +28,10 @@ class CustomCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CheckboxCubit>(
-      create: (_) => CheckboxCubit(initialVal: val),
-      child: BlocBuilder<CheckboxCubit, bool>(
+    return BlocBuilder<CheckboxCubit, bool>(
         builder: (context, isChecked) {
           return CustomWidgets.customContainer(
-            onTap: () {
-              context.read<CheckboxCubit>().toggle();
-              logger.i("Toggle Check : ${!isChecked}");
-            },
+            onTap: onTap,
             borderRadius: borderRadius ?? BorderRadius.circular(4),
             alignment: Alignment.center,
             h: boxH ?? 24,
@@ -50,8 +47,7 @@ class CustomCheckBox extends StatelessWidget {
                 : const SizedBox(),
           );
         },
-      ),
-    );
+      );
   }
 }
 

@@ -1,5 +1,6 @@
 
 
+import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_check_box.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_bloc.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/sign_up_bloc/sign_up_bloc.dart';
@@ -20,6 +21,8 @@ void main()async{
         BlocProvider<SelectCategoriesCubit>(create:(_)=>SelectCategoriesCubit()),
         BlocProvider<LoginBloc>(create: (_) => LoginBloc(authRepository: AuthRepository())),
         BlocProvider<SignUpBloc>(create: (_) => SignUpBloc(authRepository: AuthRepository())),
+        BlocProvider<CheckboxCubit>(create: (_) => CheckboxCubit(initialVal: false)),
+
       ],
       child: MyApp()));
 }

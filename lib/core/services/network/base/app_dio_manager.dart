@@ -13,8 +13,9 @@ Future<ApiResponse<PostModel>> fetchLocalDataList(int currentIndex) {
 }
 
 Future<ApiResponse<Map<String,dynamic>>> fetchLocalData(){
-  return api.get(ApiEndPoints.emulators, (json) => json as Map<String,dynamic>
+  return api.get("${ApiEndPoints.emulators}/health", (json) => json as Map<String,dynamic>
   );
 }
+
 
 

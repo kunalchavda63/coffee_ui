@@ -11,7 +11,7 @@ import 'bloc/onboarding_event.dart';
 import 'bloc/onboarding_state.dart';
 
 class Onboarding extends StatefulWidget {
-  Onboarding({super.key});
+  const Onboarding({super.key});
 
   static final List<OnboardingModel> _onboardingData = [
     OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/hand-drawn-people-taking-pictures-food-illustration_23-2150512066.jpg'),

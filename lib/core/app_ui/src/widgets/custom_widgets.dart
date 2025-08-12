@@ -396,10 +396,12 @@ abstract class CustomWidgets {
     BorderRadius? borderRadius,
     Color? iconColor,
     double? iconSize,
+    VoidCallback? onTap
 
 
 }) {
     return CustomCheckBox(
+      onTap: onTap,
       val: val??false,
       border: border,
         borderRadius: borderRadius,

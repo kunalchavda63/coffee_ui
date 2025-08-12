@@ -1,4 +1,3 @@
-import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/sign_up_bloc/sign_up_event.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/sign_up_bloc/sign_up_state.dart';
