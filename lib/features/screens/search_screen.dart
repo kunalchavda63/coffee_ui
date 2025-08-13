@@ -5,6 +5,8 @@ import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/screens/food_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../core/app_ui/src/widgets/src/food_widget/back_button.dart';
+
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -14,12 +16,22 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+
+
   final TextEditingController _searchController = TextEditingController();
+  final FocusNode _searchFocus = FocusNode();
   final List<String> recentKeyword = [
     AppStrings.burger,
     'Sandwich',
     AppStrings.pizza
   ];
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _searchFocus.requestFocus();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +39,8 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: AppColors.white,
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
-        leading: CustomWidgets.customCircleSvgIcon(
-          path: AssetIcons.icMenu,
-          bgColor: AppColors.hexEcf0,
-          h: 45.r,
-          w: 45.r,
-        ).padLeft(24.r),
+        leading: AppBarBackButton(),
+
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -40,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomWidgets.customText(
-                  data: 'Search',
+                  data: AppStrings.search,
                   style: BaseStyle.s17w400.c(AppColors.hex181C),
                 ).padRight(9.r),
               ],
@@ -83,6 +91,7 @@ class _SearchScreenState extends State<SearchScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CustomWidgets.customTextField(
+              focusNode: _searchFocus,
               onChanged: (value){
                 setState(() {
         

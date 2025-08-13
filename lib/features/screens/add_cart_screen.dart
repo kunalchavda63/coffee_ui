@@ -1,4 +1,5 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/back_button.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,12 +25,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
         isCenterTitle: false,
-        leading: CustomWidgets.customCircleSvgIcon(
-          path: AssetIcons.icBack,
-          bgColor: AppColors.hexEcf0,
-          iconColor: AppColors.hex181C,
-          padding: EdgeInsets.all(15.r),
-        ).padLeft(24.r),
+        leading: AppBarBackButton(),
         title: CustomWidgets.customText(
           data: AppStrings.details,
           style: BaseStyle.s17w400.c(AppColors.hex181C),

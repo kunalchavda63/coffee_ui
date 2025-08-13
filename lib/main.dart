@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         designSize: Size(375,812),
         builder: (context,_){
           return MaterialApp(
+
             themeMode: ThemeMode.system,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,

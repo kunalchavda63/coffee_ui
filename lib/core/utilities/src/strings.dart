@@ -58,6 +58,18 @@ class AppStrings {
   static const String nameCannotBeAtLeast2Characters = 'Name Cannot Be At Least 2 Characters';
   static const String pleaseConfirmUPassword = 'Please Confirm Your Password';
   static const String passwordDoNotMatch = 'Password Do not Match';
+  static const String restaurantView = 'Restaurant View';
+  static const String filterUSearch = 'Filter your search';
+  static const String offers = 'Offers';
+  static const String delivery = 'Delivery';
+  static const String pickUp = 'Pick Up';
+  static const String onlinePaymentAvailable = 'Online payment available';
+  static const String deliverTime = 'Deliver Time';
+  static const String pricing = 'Pricing';
+  static const String filter = 'Filter';
+  static const String rating = 'Rating';
+  // static const String restaurantView = 'Restaurant View';
+
 
 
 

@@ -1,5 +1,4 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
-import 'package:coffe_ui/core/utilities/src/extensions/logger/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckBox extends StatelessWidget {

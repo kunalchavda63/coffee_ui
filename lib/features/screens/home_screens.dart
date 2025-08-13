@@ -1,16 +1,22 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post.dart';
+import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/src/strings.dart';
 import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
-import 'package:coffe_ui/features/screens/bloc/select_categories_state.dart';
 import 'package:coffe_ui/features/screens/search_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../core/utilities/src/extensions/logger/logger.dart';
+
 class HomeScreens extends StatefulWidget {
-  const HomeScreens({super.key});
+  final UserModel? userModel;
+  const HomeScreens({
+    super.key,
+    this.userModel
+  });
 
   @override
   State<HomeScreens> createState() => _HomeScreensState();
@@ -25,6 +31,8 @@ class _HomeScreensState extends State<HomeScreens> {
   ];
   @override
   Widget build(BuildContext context) {
+    logger.i("====>>>>  ${widget.userModel?.name}");
+
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CustomWidgets.customAppBar(
@@ -52,7 +60,7 @@ class _HomeScreensState extends State<HomeScreens> {
                 Row(
                   children: [
                     CustomWidgets.customText(
-                      data: 'Halal lab office',
+                      data: '${widget.userModel?.name} lab office',
                       style: TextStyle()
                           .s(14.sp)
                           .w(400)
@@ -105,7 +113,7 @@ class _HomeScreensState extends State<HomeScreens> {
             Row(
               children: [
                 CustomWidgets.customText(
-                  data: "${AppStrings.hey} Halal,",
+                  data: "${AppStrings.hey} ${widget.userModel?.name},",
                   style: TextStyle()
                       .s(16.sp)
                       .c(AppColors.hex1e1d)
@@ -166,7 +174,7 @@ class _HomeScreensState extends State<HomeScreens> {
               ],
             ).padBottom(20.r).padH(24.r),
         
-            BlocBuilder<SelectCategoriesCubit,SelectCategoriesState>(
+            BlocBuilder<SelectCategoriesCubit,int>(
               builder: (context,state) {
                 return SizedBox(
                   height: 60.r,
@@ -178,7 +186,7 @@ class _HomeScreensState extends State<HomeScreens> {
                       itemBuilder: (context, index) {
                         return categoriesWidgets(
                             categories: categories[index],
-                            isSelected:state.currentIndex==index,
+                            isSelected:state==index,
                           onTap: (){
                               context.read<SelectCategoriesCubit>().updateIndex(index);
                           }

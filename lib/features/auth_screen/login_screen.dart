@@ -8,7 +8,6 @@ import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_bloc.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_events.dart';
 import 'package:coffe_ui/features/auth_screen/forgot_screen.dart';
 import 'package:coffe_ui/features/auth_screen/sign_up_screen.dart';
-import 'package:coffe_ui/features/screens/home_screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
@@ -137,6 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 CustomWidgets.customTextField(
                                   controller: _emailController,
                                     focusNode: _emailFocus,
+                                    textInputAction: TextInputAction.next,
+                                    textInputType: TextInputType.emailAddress,
                                     validator: validateEmail,
                                     fillColor: AppColors.hexF0f5,
                                     filled: true,
@@ -153,6 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 CustomWidgets.customTextField(
                                   controller: _passController,
                                     focusNode: _passFocus,
+                                    textInputType: TextInputType.visiblePassword,
                                     validator: validatePassword,
                                     style: TextStyle().s(14.sp).w(400).c(AppColors.hex3234).family(FontFamily.sen),
 
@@ -204,7 +206,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Opacity(
                                   opacity:isChecked == true? 1.0: 0.5,
                                   child: CustomWidgets.customButton(
-                                      onTap: ()async{
+                                      onTap: () async {
+                                        if(isChecked==true){
                                         LocationPermission permission = await Geolocator.checkPermission();
                                         if(permission == LocationPermission.denied || permission==LocationPermission.deniedForever){
                                           getIt<AppRouter>().push(AccessLocationScreen());
@@ -222,11 +225,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     .currentWidget}");
                                           }
                                           else{
+                                            showErrorToast('Invalidate Form');
                                             logger.e('Invalide Form');
                                           }
                                         }
                                         else{
                                           return;
+                                        }
+                                      }
+                                        else {
+                                        return;
                                         }
                                       },
                                       label: AppStrings.logIn

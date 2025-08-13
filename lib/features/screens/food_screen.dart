@@ -1,7 +1,9 @@
+import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/back_button.dart';
+import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/food_item_card.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
-import 'package:coffe_ui/features/screens/add_cart_screen.dart';
+import 'package:coffe_ui/features/screens/restaturant_view.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/app_ui/app_ui.dart';
@@ -16,13 +18,7 @@ class FoodScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
-        leading: CustomWidgets.customCircleSvgIcon(
-          path: AssetIcons.icBack,
-          bgColor: AppColors.hexEcf0,
-          iconColor: AppColors.hex181C,
-          padding: EdgeInsets.all(15.r)
-        ).padLeft(24.r),
-
+        leading: AppBarBackButton(),
         title: Row(
           children: [
             CustomWidgets.customContainer(
@@ -75,62 +71,7 @@ class FoodScreen extends StatelessWidget {
         
                 itemBuilder:(context,index){
         
-              return CustomWidgets.customContainer(
-                borderRadius: BorderRadius.circular(24.r),
-                border: Border.all(color: AppColors.white,width: 2),
-                color: AppColors.white,
-        
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.hex969615,
-                    offset: Offset(12,12),
-                    blurRadius: 30.r,
-                    spreadRadius: 0.r
-                  ),
-                ],
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CustomWidgets.customContainer(
-                      h: 84.r,
-                      color: AppColors.hex98a8,
-                      borderRadius: BorderRadius.circular(15.r)
-                    ).padBottom(15.r),
-                    CustomWidgets.customText(
-                        data: AppStrings.burger,
-                        style: BaseStyle.s15w700.c(AppColors.hex3234)
-                    ).padBottom(5.r),
-                    CustomWidgets.customText(
-                        data: 'Kitchen',
-                      style: TextStyle().s(13.sp).c(AppColors.hex6469).family(FontFamily.sen)
-                    ).padBottom(8.r),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomWidgets.customText(
-                          data: "\$40",
-                          style: TextStyle().s(16.sp).c(AppColors.hex3234).w(700).letter(-0.33).family(FontFamily.sen)
-                        ),
-                        CustomWidgets.customCircleSvgIcon(
-                          bgColor: AppColors.hexF58d,
-                          onTap: (){
-                            logger.i('Pushing : Details Screen');
-                            getIt<AppRouter>().push(AddCartScreen());
-                          },
-                          path: AssetIcons.icAdd,
-                          h: 30.r,
-                          w: 30.r,
-                          iconColor: AppColors.white,
-                        )
-                        
-                      ],
-                    )
-        
-                    
-                  ],
-                ).padH(14.r)
-        
-              );
+              return FoodItemCard();
                 }).padBottom(32.r),
             CustomWidgets.customText(
               data: AppStrings.openRestaurants,
@@ -141,7 +82,11 @@ class FoodScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context,index){
-              return RestaurantPost().padBottom(28.r);
+              return GestureDetector(
+                  onTap: (){
+                    getIt<AppRouter>().push(RestaturantView());
+                  },
+                  child: RestaurantPost().padBottom(28.r));
             }
             )
         
