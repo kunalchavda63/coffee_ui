@@ -73,9 +73,7 @@ class _RestaturantViewState extends State<RestaturantView> {
                                     iconColor: AppColors.hex6469,
                                     bgColor: AppColors.hexEcf0,
                                     padding: EdgeInsets.all(16.r),
-
-
-                                  )
+                                  ).padRight(20.r),
                                 ],
                               ).padBottom(19.r),
                               CustomWidgets.customText(
@@ -94,7 +92,6 @@ class _RestaturantViewState extends State<RestaturantView> {
                                       ),
                                       border: Border.all(color: AppColors.hexEded,width: 2),
                                       borderRadius: BorderRadius.circular(33.r),
-
                                     ).padRight(10.r).padBottom(9.04.r);
                                 }).toList()
                               ).padBottom(32.r),
@@ -103,13 +100,14 @@ class _RestaturantViewState extends State<RestaturantView> {
                                   style: BaseStyle.s11w700.c(AppColors.hex3234)
                               ).padBottom(13.01.r),
                               Row(
+
                                 children: [
                                   CustomWidgets.customContainer(
                                     color: AppColors.hexF58d,
                                     padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
                                     child: CustomWidgets.customText(
-                                        data: "10 min",
-                                        style: BaseStyle.s16w400.c(AppColors.hex6469).letter(-0.58)
+                                        data: "10-15 min",
+                                        style: BaseStyle.s16w400.c(AppColors.white).letter(-0.58)
                                     ),
                                     border: Border.all(color: AppColors.hexEded,width: 2),
                                     borderRadius: BorderRadius.circular(33.r),
