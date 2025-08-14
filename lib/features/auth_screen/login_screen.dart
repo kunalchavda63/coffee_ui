@@ -285,7 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         iconColor: AppColors.white,
                                         padding: EdgeInsets.all(20.r)
                                     ),
-                                    CustomWidgets.customCircleSvgIcon(
+                                    if(isIos) CustomWidgets.customCircleSvgIcon(
                                         h: 62.r,
                                         w: 62.r,
                                         bgColor:AppColors.black,

@@ -15,7 +15,7 @@ class AppBarBackButton extends StatelessWidget {
         path: AssetIcons.icBack,
         bgColor: AppColors.hexEcf0,
         iconColor: AppColors.hex181C,
-        padding: EdgeInsets.all(15.r)
+        padding: EdgeInsets.all(10.r)
     ).padLeft(24.r);
   }
 }

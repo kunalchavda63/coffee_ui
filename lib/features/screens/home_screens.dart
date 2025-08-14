@@ -31,7 +31,7 @@ class _HomeScreensState extends State<HomeScreens> {
   ];
   @override
   Widget build(BuildContext context) {
-    logger.i("====>>>>  ${widget.userModel?.name}");
+    logger.i("====>>>>  ${widget.userModel?.username}");
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -60,7 +60,7 @@ class _HomeScreensState extends State<HomeScreens> {
                 Row(
                   children: [
                     CustomWidgets.customText(
-                      data: '${widget.userModel?.name} lab office',
+                      data: '${widget.userModel?.username} lab office',
                       style: TextStyle()
                           .s(14.sp)
                           .w(400)
@@ -113,7 +113,7 @@ class _HomeScreensState extends State<HomeScreens> {
             Row(
               children: [
                 CustomWidgets.customText(
-                  data: "${AppStrings.hey} ${widget.userModel?.name},",
+                  data: "${AppStrings.hey} ${widget.userModel?.username},",
                   style: TextStyle()
                       .s(16.sp)
                       .c(AppColors.hex1e1d)
