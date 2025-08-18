@@ -220,6 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             );
 
 
+
                                             logger.i(
                                                 "Pushing : ${getIt<AppRouter>().navigatorKey
                                                     .currentWidget}");

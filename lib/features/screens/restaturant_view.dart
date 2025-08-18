@@ -1,5 +1,7 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_circle_svg_icon.dart';
+import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/src/strings.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,11 +18,21 @@ class RestaturantView extends StatefulWidget {
 class _RestaturantViewState extends State<RestaturantView> {
   late Size size;
 
-  final List<String> list = [
+  final List<String> offersList = [
     AppStrings.delivery,
     AppStrings.pickUp,
     AppStrings.offers,
     AppStrings.onlinePaymentAvailable
+  ];
+  final List<String> durationList = [
+    '10-15 min',
+    '20 min',
+    '30 min',
+  ];
+  final List<String> priceList = [
+    '\$',
+    '\$\$',
+    '\$\$\$'
   ];
 
   @override
@@ -69,20 +81,22 @@ class _RestaturantViewState extends State<RestaturantView> {
                                       style: BaseStyle.s17w400.c(AppColors.hex181C).line(2.2.r)
                                   ),
                                   CustomWidgets.customCircleSvgIcon(
+                                    h: 45.r,
+                                    w: 45.r,
                                     path: AssetIcons.icCross,
                                     iconColor: AppColors.hex6469,
                                     bgColor: AppColors.hexEcf0,
-                                    padding: EdgeInsets.all(16.r),
+                                    padding: EdgeInsets.all(17.r),
                                   ).padRight(20.r),
                                 ],
                               ).padBottom(19.r),
                               CustomWidgets.customText(
                                 data: AppStrings.offers.toUpperCase(),
-                                style: BaseStyle.s11w700.c(AppColors.hex3234)
+                                style: BaseStyle.s11w700.c(AppColors.hex3234).family(FontFamily.sen).w(400)
                               ).padBottom(13.01.r),
                               Wrap(
                                 alignment: WrapAlignment.start,
-                                children: list.map((e)  {
+                                children: offersList.map((e)  {
                                   return
                                     CustomWidgets.customContainer(
                                       padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
@@ -97,45 +111,82 @@ class _RestaturantViewState extends State<RestaturantView> {
                               ).padBottom(32.r),
                               CustomWidgets.customText(
                                   data: AppStrings.deliverTime.toUpperCase(),
-                                  style: BaseStyle.s11w700.c(AppColors.hex3234)
+                                  style: BaseStyle.s11w700.c(AppColors.hex3234).family(FontFamily.sen).w(400)
                               ).padBottom(13.01.r),
                               Row(
+                                children:
+                                    durationList.map((e) {
+                                      return
+                                        CustomWidgets.customContainer(
+                                          color: AppColors.hexF58d,
+                                          padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
+                                          child: CustomWidgets.customText(
+                                              data: e,
+                                              style: BaseStyle.s16w400.c(AppColors.white).letter(-0.58)
+                                          ),
+                                          border: Border.all(color: AppColors.hexEded,width: 2),
+                                          borderRadius: BorderRadius.circular(33.r),
 
-                                children: [
-                                  CustomWidgets.customContainer(
-                                    color: AppColors.hexF58d,
-                                    padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
-                                    child: CustomWidgets.customText(
-                                        data: "10-15 min",
-                                        style: BaseStyle.s16w400.c(AppColors.white).letter(-0.58)
-                                    ),
-                                    border: Border.all(color: AppColors.hexEded,width: 2),
-                                    borderRadius: BorderRadius.circular(33.r),
+                                        ).padRight(10.r);
 
-                                  ).padRight(10.r),
-                                  CustomWidgets.customContainer(
-                                    padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
-                                    child: CustomWidgets.customText(
-                                        data: "10 min",
-                                        style: BaseStyle.s16w400.c(AppColors.hex6469).letter(-0.58)
-                                    ),
-                                    border: Border.all(color: AppColors.hexEded,width: 2),
-                                    borderRadius: BorderRadius.circular(33.r),
+                                    }).toList()
 
-                                  ).padRight(10.r),
-                                  CustomWidgets.customContainer(
-                                    padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
-                                    child: CustomWidgets.customText(
-                                        data: "10 min",
-                                        style: BaseStyle.s16w400.c(AppColors.hex6469).letter(-0.58)
-                                    ),
-                                    border: Border.all(color: AppColors.hexEded,width: 2),
-                                    borderRadius: BorderRadius.circular(33.r),
+                                ,
+                              ).padBottom(32.r),
+                              CustomWidgets.customText(
+                                  data: AppStrings.pricing.toUpperCase(),
+                                  style: BaseStyle.s11w700.c(AppColors.hex3234).family(FontFamily.sen).w(400)
+                              ).padBottom(13.01.r),
+                              Row(
+                                children:
+                                priceList.map((e) {
+                                  return
+                                    CustomWidgets.customContainer(
 
-                                  ).padRight(10.r),
+                                      padding: EdgeInsets.symmetric(horizontal: 17.r,vertical: 13.r),
+                                      child: CustomWidgets.customText(
+                                          data: e,
+                                          style: BaseStyle.s16w400.c(AppColors.black).letter(-0.58)
+                                      ),
+                                      border: Border.all(color: AppColors.hexEded,width: 2),
+                                      borderRadius: BorderRadius.circular(33.r),
 
-                                ],
-                              )
+                                    ).padRight(10.r);
+
+                                }).toList()
+
+                                ,
+                              ).padBottom(32.r),
+                              CustomWidgets.customText(
+                                  data: AppStrings.rating.toUpperCase(),
+                                  style: BaseStyle.s11w700.c(AppColors.hex3234).family(FontFamily.sen).w(400)
+                              ).padBottom(13.01.r),
+                              SizedBox(
+                                height: 48.r,
+                                child: ListView.builder(
+                                    itemCount: 5,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context,index){
+                                  return CustomWidgets.customCircleSvgIcon(
+                                    h: 48.r,
+                                    w: 48.r,
+                                    border: Border.all(color: AppColors.hexEded),
+                                    path: AssetIcons.icStarFill,
+                                    padding: EdgeInsets.all(14.93.r),
+                                    iconColor:index == 4 ?AppColors.hexD9d9: AppColors.hexFf76,
+
+
+                                
+                                  ).padRight(11.r);
+                                }),
+                              ).padBottom(31.r),
+                              CustomWidgets.customButton(
+                                label: AppStrings.filter,
+                                onTap: (){
+                                  getIt<AppRouter>().pop();
+                                }
+                              ).padRight(20.r)
+
 
 
                             ],

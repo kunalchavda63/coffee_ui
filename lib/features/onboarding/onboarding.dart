@@ -16,7 +16,7 @@ class Onboarding extends StatefulWidget {
   static final List<OnboardingModel> _onboardingData = [
     OnboardingModel(title:AppStrings.allUFavorites,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/hand-drawn-people-taking-pictures-food-illustration_23-2150512066.jpg'),
     OnboardingModel(title:AppStrings.orderFromChooseChef,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cooking-school-isometric-composition-with-delicious-dishes-ingredients-character-chef-3d_1284-63383.jpg'),
-    OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/free-vector/cloud-kitchen-service-concept-with-package-delivery-symbols-isometric-vector-illustration_98292-9326.jpg'),
+    OnboardingModel(title:AppStrings.freeDeliveryOffers,subTitle: AppStrings.getAllYourLoved,imagePath: 'https://img.freepik.com/premium-vector/food-delivery-service-fast-food-delivery-scooter-delivery-service-illustration_67394-865.jpg?w=1200'),
   ];
 
   @override
@@ -58,13 +58,15 @@ class _OnboardingState extends State<Onboarding> {
               animationType: AnimationTypes.fade,
               curve: Curves.linear,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadiusGeometry.circular(20),
+
                 child: CustomWidgets.customImageView(
+
                     height: 292.r,
                     width: 292.r,
                   path: imagePath,
                   sourceType: ImageType.network,
-                  fit: BoxFit.cover
+                  fit: BoxFit.contain
 
                             ),
               )

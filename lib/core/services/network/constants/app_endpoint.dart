@@ -5,4 +5,5 @@ class ApiEndPoints {
   static const signUp = '$physical/auth/signup';
   static const user = '$physical/auth/users';
 
+
 }

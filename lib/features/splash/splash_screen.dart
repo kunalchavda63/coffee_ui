@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
+import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/onboarding/onboarding.dart';
+import 'package:coffe_ui/features/screens/home_screens.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,15 +24,31 @@ class _SplashScreenState extends State<SplashScreen> {
     setStatusBarDarkStyle();
   }
 
+  Future<void> navigateNext() async{
+    final bool isLoggedIn =  LocalPreferences().isAuth;
+    if(isLoggedIn){
+    final int? userId = LocalPreferences().userId;
+    var response = await getIt<AuthRepository>().getUserData(userId!);
+    if(response.success && response.data!=null){
+      await Future.delayed(const Duration(seconds: 3));
+      getIt<AppRouter>().pushReplacement(
+          isLoggedIn ? HomeScreens(userModel: response.data) : Onboarding()
+      );
+
+    }
+    else {
+      logger.i(response.message);
+    }
+
+    }
+
+  }
+
   @override
   void initState() {
     super.initState();
-    Timer(
-      Duration(seconds: 3),(){
-        getIt<AppRouter>().pushReplacement(
-             Onboarding());
-    }
-    );
+    Future.microtask(() => navigateNext());
+
   }
   @override
   Widget build(BuildContext context) {

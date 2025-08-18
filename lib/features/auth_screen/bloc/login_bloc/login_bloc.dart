@@ -1,5 +1,6 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
+import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/network/base/abstract_dio_manager.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
@@ -33,7 +34,8 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
         if(user.success && user.data != null){
           getIt<AppRouter>().pushReplacement(HomeScreens(userModel: user.data));
           logger.i(user.data?.toJson());
-
+          await LocalPreferences().setAuth(true);
+          await LocalPreferences().setUserId(data);
           }
           else{
             showErrorToast(user.message ?? 'Failed to fetch user data');
