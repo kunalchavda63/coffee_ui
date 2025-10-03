@@ -9,7 +9,6 @@ import 'package:coffe_ui/features/onboarding/bloc/onboarding_bloc.dart';
 import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
 import 'package:coffe_ui/features/splash/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'core/app_ui/app_ui.dart';
 import 'core/services/navigation/src/app_router.dart';
 import 'core/services/repositories/service_locator.dart';

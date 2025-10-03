@@ -58,7 +58,7 @@ class _OnboardingState extends State<Onboarding> {
               animationType: AnimationTypes.fade,
               curve: Curves.linear,
               child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(20),
+                borderRadius: BorderRadius.circular(20),
 
                 child: CustomWidgets.customImageView(
 

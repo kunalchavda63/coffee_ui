@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
               )
                   .family(FontFamily.sen),
             ),
-            ?icon
+
 
           ],
         ),
