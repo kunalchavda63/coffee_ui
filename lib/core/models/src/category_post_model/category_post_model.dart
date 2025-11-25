@@ -12,7 +12,7 @@ abstract class CategoryPostModel with _$CategoryPostModel {
     required String subTitle,
     required double rate,
     required int price,
-    required int duration
+    required int duration,
   }) = _CategoryPostModel;
 
   factory CategoryPostModel.fromJson(Map<String, dynamic> json) =>

@@ -1,9 +1,8 @@
 
 
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_check_box.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_circle_svg_icon.dart';
-
-import '../../app_ui.dart';
 
 abstract class CustomWidgets {
   const CustomWidgets._();
@@ -31,7 +30,7 @@ abstract class CustomWidgets {
     int? maxLength,
     Color? cursorColor,
     bool? obscureText,
-    Function(String? val)? onChanged
+    void Function(String? val)? onChanged,
 
   }) {
     return CustomTextField(
@@ -79,7 +78,7 @@ abstract class CustomWidgets {
     Clip? clip,
     String? path,
     Gradient? gradient,
-    BoxDecoration? foregroundDecoration
+    BoxDecoration? foregroundDecoration,
   }) {
     return CustomContainer(
       h: h,
@@ -280,7 +279,7 @@ abstract class CustomWidgets {
 
   // Custom Playlist card
   static Widget customPlaylistCard() {
-    return CustomPlaylistCard();
+    return const CustomPlaylistCard();
   }
 
   // Custom Animation Wrapper
@@ -292,9 +291,9 @@ abstract class CustomWidgets {
   }) {
     return CustomAnimatedWrapper(
       animationType: animationType ?? AnimationTypes.fade,
-      duration: duration ?? Duration(milliseconds: 800),
+      duration: duration ?? const Duration(milliseconds: 800),
       curve: curve ?? Curves.easeInOut,
-      child: child ?? Center(),
+      child: child ?? const Center(),
     );
   }
 
@@ -328,7 +327,7 @@ abstract class CustomWidgets {
       eachChild: eachChild,
       popupMenuPosition: popupMenuPosition,
       onSelected: onSelected ?? (v) {},
-      icon: icon ?? Icon(Icons.more_vert),
+      icon: icon ?? const Icon(Icons.more_vert),
       shapeBorder: shapeBorder,
     );
   }
@@ -368,7 +367,7 @@ abstract class CustomWidgets {
     Color? iconColor,
     VoidCallback? onTap,
     EdgeInsets? padding,
-    BoxFit? fit
+    BoxFit? fit,
   }) {
     return CustomCircleSvgIcon(
       h: h,
@@ -396,7 +395,7 @@ abstract class CustomWidgets {
     BorderRadius? borderRadius,
     Color? iconColor,
     double? iconSize,
-    VoidCallback? onTap
+    VoidCallback? onTap,
 
 
 }) {

@@ -12,7 +12,7 @@ abstract class UserModel with _$UserModel{
     String? username,
     String? email,
     String? password,
-    @JsonKey(name: 'created_at') DateTime? createdAt,
+    DateTime? createdAt,
     Role? role,
     Map<String, dynamic>? profile,
   }) = _UserModel;

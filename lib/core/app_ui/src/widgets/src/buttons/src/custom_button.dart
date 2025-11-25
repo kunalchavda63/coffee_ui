@@ -1,16 +1,16 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class CustomButton extends StatelessWidget {
+
+
+  const CustomButton({super.key, this.label, this.onTap, this.icon});
   final String? label;
   final VoidCallback? onTap;
   final Widget? icon;
 
-
-  const CustomButton({super.key, this.label, this.onTap, this.icon});
-
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return CustomWidgets.customContainer(
       onTap: onTap,
       h: 62.r,
@@ -22,7 +22,6 @@ class CustomButton extends StatelessWidget {
       clip: Clip.hardEdge,
       // Ensure children are clipped within borderRadius
       child: Align(
-        alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -32,7 +31,7 @@ class CustomButton extends StatelessWidget {
                   .w(400)
               .family(FontFamily.sen)
               .w(700)
-                  .c(AppColors.white
+                  .c(AppColors.white,
               )
                   .family(FontFamily.sen),
             ),

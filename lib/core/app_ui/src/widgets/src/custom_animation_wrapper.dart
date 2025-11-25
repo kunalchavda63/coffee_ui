@@ -1,15 +1,10 @@
+import 'package:coffe_ui/core/models/models.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../models/models.dart';
 
 /// Types of animations you can apply.
 
 /// Reusable animated wrapper for any widget.
 class CustomAnimatedWrapper extends StatefulWidget {
-  final Widget child;
-  final AnimationTypes animationType;
-  final Duration duration;
-  final Curve curve;
 
   const CustomAnimatedWrapper({
     super.key,
@@ -18,6 +13,10 @@ class CustomAnimatedWrapper extends StatefulWidget {
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.easeInOut,
   });
+  final Widget child;
+  final AnimationTypes animationType;
+  final Duration duration;
+  final Curve curve;
 
   @override
   State<CustomAnimatedWrapper> createState() => _CustomAnimatedWrapperState();

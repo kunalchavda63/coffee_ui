@@ -16,7 +16,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
     AssetIcons.icSalt,
     AssetIcons.icChicken,
     AssetIcons.icOnion,
-    AssetIcons.icGarlic
+    AssetIcons.icGarlic,
   ];
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
         isCenterTitle: false,
-        leading: AppBarBackButton(),
+        leading: const AppBarBackButton(),
         title: CustomWidgets.customText(
           data: AppStrings.details,
           style: BaseStyle.s17w400.c(AppColors.hex181C),
@@ -48,7 +48,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
                   h: 37.r,
                   w: 37.r,
                   fit: BoxFit.contain,
-                  iconColor: AppColors.white
+                  iconColor: AppColors.white,
                 ),
                 borderRadius: BorderRadius.circular(32.r),
               ).padTop(32.r).padBottom(24.r),
@@ -73,7 +73,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
             ).padBottom(20.r).padH(24.r),
             CustomWidgets.customText(
               data: 'Pizza Calzone European',
-              style: TextStyle()
+              style: const TextStyle()
                   .s(20.sp)
                   .w(700)
                   .family(FontFamily.sen)
@@ -92,11 +92,10 @@ class _AddCartScreenState extends State<AddCartScreen> {
                       AssetIcons.icStart,
                       height: 20,
                       width: 20,
-                      fit: BoxFit.contain,
                     ).padRight(10.r),
                     CustomWidgets.customText(
                       data: '4.7',
-                      style: TextStyle()
+                      style: const TextStyle()
                           .s(16.sp)
                           .w(700)
                           .family(FontFamily.sen)
@@ -110,11 +109,10 @@ class _AddCartScreenState extends State<AddCartScreen> {
                       AssetIcons.icTruck,
                       height: 20,
                       width: 20,
-                      fit: BoxFit.contain,
                     ).padRight(10.r),
                     CustomWidgets.customText(
                       data: 'Free',
-                      style: TextStyle()
+                      style: const TextStyle()
                           .s(14.sp)
                           .w(400)
                           .family(FontFamily.sen)
@@ -128,11 +126,10 @@ class _AddCartScreenState extends State<AddCartScreen> {
                       AssetIcons.icClock,
                       height: 20,
                       width: 20,
-                      fit: BoxFit.contain,
                     ).padRight(10.r),
                     CustomWidgets.customText(
                       data: '20 min',
-                      style: TextStyle()
+                      style: const TextStyle()
                           .s(14.sp)
                           .w(400)
                           .family(FontFamily.sen)
@@ -146,7 +143,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
               children: [
                 CustomWidgets.customText(
                   data: '${AppStrings.size.toUpperCase()}:',
-                  style: TextStyle()
+                  style: const TextStyle()
                       .s(13.sp)
                       .c(AppColors.hex3234)
                       .family(FontFamily.sen)
@@ -169,8 +166,8 @@ class _AddCartScreenState extends State<AddCartScreen> {
                         boxShape: BoxShape.circle,
                         child: CustomWidgets.customText(
                           data: '10”',
-                          style: BaseStyle.s16w400.c(AppColors.hex1212)
-                        )
+                          style: BaseStyle.s16w400.c(AppColors.hex1212),
+                        ),
                       ).padRight(10.r);
                     },
                   ),
@@ -179,7 +176,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
             ).padBottom(18.25.r).padH(24.r),
             CustomWidgets.customText(
               data: AppStrings.ingridents.toUpperCase(),
-              style: TextStyle().s(13.sp).c(AppColors.hex3234).letter(2).family(FontFamily.sen)
+              style: const TextStyle().s(13.sp).c(AppColors.hex3234).letter(2).family(FontFamily.sen),
             ).padBottom(19.29.r).padH(24.r),
             SizedBox(
               height: 50.r,
@@ -194,9 +191,9 @@ class _AddCartScreenState extends State<AddCartScreen> {
                       boxShape: BoxShape.circle,
                       padding: EdgeInsets.all(12.r),
                       color:AppColors.hexFfeb ,
-                      child: SvgPicture.asset(ingridents[index])
+                      child: SvgPicture.asset(ingridents[index]),
                     ).padRight(19.r);
-                  }),
+                  },),
             ).padH(24.r).padBottom(7.r),
             CustomWidgets.customContainer(
               borderRadius: BorderRadius.only(
@@ -210,9 +207,9 @@ class _AddCartScreenState extends State<AddCartScreen> {
                     children: [
                       CustomWidgets.customText(
                         data: '\$32',
-                        style: BaseStyle.s28w400.c(AppColors.hex181C)
+                        style: BaseStyle.s28w400.c(AppColors.hex181C),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       CustomWidgets.customContainer(
                         h:48.r,
                         color: AppColors.hex1212,
@@ -228,33 +225,33 @@ class _AddCartScreenState extends State<AddCartScreen> {
                             ),
                             CustomWidgets.customText(
                               data: '2',
-                              style:BaseStyle.s16w500.c(AppColors.white).w(700)
+                              style:BaseStyle.s16w500.c(AppColors.white).w(700),
                             ).padH(20.r),
                             CustomWidgets.customCircleSvgIcon(
                               bgColor: AppColors.white20,
                               iconColor: AppColors.white,
                               path: AssetIcons.icAdd,
-                            )
+                            ),
                           ],
                         ),
 
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(0,12),
+                            offset: const Offset(0,12),
                             color: AppColors.black04,
                             blurRadius: 20.r,
-                            spreadRadius: 0.r
-                          )
-                        ]
-                      )
+                            spreadRadius: 0.r,
+                          ),
+                        ],
+                      ),
                     ],
                   ).padBottom(24.r),
                   CustomWidgets.customButton(
                     label: AppStrings.addToCart.toUpperCase(),
-                  )
+                  ),
                 ],
               ).padBottom(MediaQuery.of(context).viewInsets.bottom+MediaQuery.of(context).viewPadding.bottom+30.r).padH(24.r).padTop(27.r),
-            )
+            ),
           ],
         ),
       ),

@@ -3,20 +3,19 @@ import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post
 import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
+import 'package:coffe_ui/core/utilities/src/extensions/logger/logger.dart';
 import 'package:coffe_ui/core/utilities/src/strings.dart';
 import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
 import 'package:coffe_ui/features/screens/search_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../core/utilities/src/extensions/logger/logger.dart';
-
 class HomeScreens extends StatefulWidget {
-  final UserModel? userModel;
   const HomeScreens({
     super.key,
-    this.userModel
+    this.userModel,
   });
+  final UserModel? userModel;
 
   @override
   State<HomeScreens> createState() => _HomeScreensState();
@@ -31,7 +30,7 @@ class _HomeScreensState extends State<HomeScreens> {
   ];
   @override
   Widget build(BuildContext context) {
-    logger.i("====>>>>  ${widget.userModel?.username}");
+    logger.i('====>>>>  ${widget.userModel?.username}');
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -51,7 +50,7 @@ class _HomeScreensState extends State<HomeScreens> {
               children: [
                 CustomWidgets.customText(
                   data: AppStrings.deliverTo.toUpperCase(),
-                  style: TextStyle()
+                  style: const TextStyle()
                       .s(12.sp)
                       .w(700)
                       .c(AppColors.hexFc6e)
@@ -61,7 +60,7 @@ class _HomeScreensState extends State<HomeScreens> {
                   children: [
                     CustomWidgets.customText(
                       data: '${widget.userModel?.username} lab office',
-                      style: TextStyle()
+                      style: const TextStyle()
                           .s(14.sp)
                           .w(400)
                           .c(AppColors.hex6767)
@@ -113,15 +112,15 @@ class _HomeScreensState extends State<HomeScreens> {
             Row(
               children: [
                 CustomWidgets.customText(
-                  data: "${AppStrings.hey} ${widget.userModel?.username},",
-                  style: TextStyle()
+                  data: '${AppStrings.hey} ${widget.userModel?.username},',
+                  style: const TextStyle()
                       .s(16.sp)
                       .c(AppColors.hex1e1d)
                       .family(FontFamily.sen),
                 ).padRight(4.r),
                 CustomWidgets.customText(
                   data: AppStrings.goodAfternoon,
-                  style: TextStyle()
+                  style: const TextStyle()
                       .s(16.sp)
                       .c(AppColors.hex1e1d)
                       .family(FontFamily.sen)
@@ -131,14 +130,14 @@ class _HomeScreensState extends State<HomeScreens> {
             ).padBottom(16.r).padH(24.r),
             GestureDetector(
               onTap: (){
-                getIt<AppRouter>().push(SearchScreen());
+                getIt<AppRouter>().push<dynamic>(const SearchScreen());
               },
               child: AbsorbPointer(
                 child: CustomWidgets.customTextField(
 
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.r),
-                    borderSide: BorderSide(color: AppColors.transparent),
+                    borderSide: const BorderSide(color: AppColors.transparent),
                   ),
                   filled: true,
                   padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 24.r),
@@ -147,7 +146,7 @@ class _HomeScreensState extends State<HomeScreens> {
                     AssetIcons.icSearch,
                   ).padLeft(20.r).padRight(12.r),
                   hintText:
-                      "${AppStrings.search} ${AppStrings.dishes.toLowerCase()}, ${AppStrings.restaurants.toLowerCase()}",
+                      '${AppStrings.search} ${AppStrings.dishes.toLowerCase()}, ${AppStrings.restaurants.toLowerCase()}',
                   hintStyle: BaseStyle.s14w500
                       .c(AppColors.hex6767)
                       .family(FontFamily.sen)
@@ -189,20 +188,20 @@ class _HomeScreensState extends State<HomeScreens> {
                             isSelected:state==index,
                           onTap: (){
                               context.read<SelectCategoriesCubit>().updateIndex(index);
-                          }
+                          },
         
         
                         ).padRight(7.r);
-                      }),
+                      },),
                 );
-              }
+              },
             ).padBottom(32.r),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomWidgets.customText(
                     data: AppStrings.openRestaurants,
-                    style: BaseStyle.s20w400.c(AppColors.hex3234)
+                    style: BaseStyle.s20w400.c(AppColors.hex3234),
                 ),
                 Row(
                   children: [
@@ -213,12 +212,12 @@ class _HomeScreensState extends State<HomeScreens> {
                     SvgPicture.asset(AssetIcons.icRightArrow),
                     
                   ],
-                )
+                ),
               ],
             ).padH(24.r).padBottom(20.r),
-            RestaurantPost().padH(24.r).padBottom(28.r),
-            RestaurantPost().padH(24.r).padBottom(28.r),
-            RestaurantPost().padH(24.r).padBottom(28.r),
+            const RestaurantPost().padH(24.r).padBottom(28.r),
+            const RestaurantPost().padH(24.r).padBottom(28.r),
+            const RestaurantPost().padH(24.r).padBottom(28.r),
         
         
           ],
@@ -238,7 +237,7 @@ class _HomeScreensState extends State<HomeScreens> {
               borderRadius: BorderRadius.circular(39.r),
               foregroundDecoration: BoxDecoration(
                   color: AppColors.transparent,
-                  borderRadius: BorderRadius.circular(39.r)
+                  borderRadius: BorderRadius.circular(39.r),
               ),
               h: 60.r,
               color: (isSelected ?? false) ? AppColors.hexFfd2:AppColors.white,
@@ -252,10 +251,10 @@ class _HomeScreensState extends State<HomeScreens> {
                   ).padRight(13.r),
                   CustomWidgets.customText(
                     data: categories?.title.toString() ?? 'Data',
-                    style: BaseStyle.s14w500.w(700).c(AppColors.hex3234).family(FontFamily.sen)
-                  )
+                    style: BaseStyle.s14w500.w(700).c(AppColors.hex3234).family(FontFamily.sen),
+                  ),
                 ],
-              ).padH(10.r)
+              ).padH(10.r),
           ),
         ),
       );
@@ -264,7 +263,7 @@ class _HomeScreensState extends State<HomeScreens> {
 }
 
 class CategoriesModel {
+  CategoriesModel({required this.title, this.imagePath});
   final String title;
   final String? imagePath;
-  CategoriesModel({required this.title, this.imagePath});
 }

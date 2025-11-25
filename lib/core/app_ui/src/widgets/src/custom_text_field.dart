@@ -1,31 +1,8 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomTextField extends StatefulWidget {
-  final String? label;
-  final String? hintText;
-  final String? Function(String?)? validator;
-  final InputBorder? border;
-  final TextEditingController? controller;
-  final Widget? suffixIcon;
-  final Widget? prefixIcon;
-  final EdgeInsets? padding;
-  final TextInputAction? textInputAction;
-  final TextInputType? textInputType;
-  final TextCapitalization? textCapitalization;
-  final bool? isExpand;
-  final bool? filled;
-  final Color? fillColor;
-  final TextStyle? style;
-  final TextStyle? hintStyle;
-  final TextStyle? labelStyle;
-  final FocusNode? focusNode;
-  final int? maxLength;
-  final String? initialValue;
-  final Color? cursorColor;
-  final bool? obscureText;
-  final  Function(String? val)? onChanged;
 
 
   const CustomTextField({
@@ -51,8 +28,33 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.initialValue,
     this.cursorColor,
-    this.obscureText = false, this.onChanged
-  });
+    this.obscureText = false,
+    this.onChanged,
+  }
+  );
+  final String? label;
+  final String? hintText;
+  final String? Function(String?)? validator;
+  final InputBorder? border;
+  final TextEditingController? controller;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final EdgeInsets? padding;
+  final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
+  final TextCapitalization? textCapitalization;
+  final bool? isExpand;
+  final bool? filled;
+  final Color? fillColor;
+  final TextStyle? style;
+  final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
+  final FocusNode? focusNode;
+  final int? maxLength;
+  final String? initialValue;
+  final Color? cursorColor;
+  final bool? obscureText;
+  final void Function(String? val)? onChanged;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -72,7 +74,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       onChanged: widget.onChanged,
       maxLengthEnforcement: MaxLengthEnforcement.none,
-      inputFormatters: [],
+      inputFormatters: const [],
       textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
       initialValue: widget.initialValue,
       focusNode: widget.focusNode,
@@ -106,9 +108,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
               _obscure = !_obscure;
             }),
             child:SvgPicture.asset(
-                _obscure == true ? AssetIcons.icEye:AssetIcons.icEyeOff,colorFilter: ColorFilter.mode(AppColors.hexB4b9,BlendMode.srcIn),)).padH(20.r):
+                _obscure == true ? AssetIcons.icEye:AssetIcons.icEyeOff,colorFilter: const ColorFilter.mode(AppColors.hexB4b9,BlendMode.srcIn),),).padH(20.r):
         widget.suffixIcon,
-        counterText: "",
+        counterText: '',
       ),
       validator: widget.validator,
       obscureText: _obscure,

@@ -1,23 +1,22 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
 import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
+import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/network/base/abstract_dio_manager.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
+import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_events.dart';
 import 'package:coffe_ui/features/auth_screen/bloc/login_bloc/login_state.dart';
+import 'package:coffe_ui/features/screens/home_screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/services/navigation/router.dart';
-import '../../../../core/services/repositories/service_locator.dart';
-import '../../../screens/home_screens.dart';
-
 class LoginBloc extends Bloc<LoginEvent,LoginState>{
-  final AuthRepository authRepository;
 
   LoginBloc({required this.authRepository}) : super(LoginInitial()){
     on<LoginSubmitted>(_onLoginSubmitted);
   }
+  final AuthRepository authRepository;
 
   Future<void> _onLoginSubmitted(
       LoginSubmitted event,
@@ -29,10 +28,10 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
       final response = await authRepository.login(event.email,event.password);
 
       if(response.success){
-        final data = response.data?["user_id"];
-        final ApiResponse<UserModel>  user = await authRepository.getUserData(data);
+        final data = response.data?['user_id'];
+        final ApiResponse<UserModel>  user = await authRepository.getUserData(data as int);
         if(user.success && user.data != null){
-          getIt<AppRouter>().pushReplacement(HomeScreens(userModel: user.data));
+          getIt<AppRouter>().pushReplacement<dynamic>(HomeScreens(userModel: user.data));
           logger.i(user.data?.toJson());
           await LocalPreferences().setAuth(true);
           await LocalPreferences().setUserId(data);
@@ -44,16 +43,16 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
         }
 
         logger.i(response.data);
-        showSuccessToast("status code ${response.statusCode}\n${response.data}");
+        showSuccessToast('status code ${response.statusCode}\n${response.data}');
         emit(LoginSuccess(response.data ?? {}));
       }
        else{
         logger.e(response.message);
-        showErrorToast("${response.message}");
+        showErrorToast('${response.message}');
          emit(LoginFailure(response.message ?? 'Login Failed'));
       }
 
-    } catch (e){
+    } on Exception catch (e){
       logger.e('Network Connection');
       emit(LoginFailure(e.toString()));
     }

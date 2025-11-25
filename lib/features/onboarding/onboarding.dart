@@ -4,11 +4,10 @@ import 'package:coffe_ui/core/services/network/base/app_dio_manager.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/auth_screen/login_screen.dart';
+import 'package:coffe_ui/features/onboarding/bloc/onboarding_bloc.dart';
+import 'package:coffe_ui/features/onboarding/bloc/onboarding_event.dart';
+import 'package:coffe_ui/features/onboarding/bloc/onboarding_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'bloc/onboarding_bloc.dart';
-import 'bloc/onboarding_event.dart';
-import 'bloc/onboarding_state.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -32,13 +31,13 @@ class _OnboardingState extends State<Onboarding> {
 
   Future<void> _loadLocalData() async {
     try {
-      var data = await fetchLocalData();
+      final data = await fetchLocalData();
       if (data.success) {
         logger.i(data.data);
       } else {
         logger.e(data.message);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       logger.e(e.toString());
     }
   }
@@ -54,7 +53,7 @@ class _OnboardingState extends State<Onboarding> {
       children: [
         Center(
           child:CustomWidgets.customAnimationWrapper(
-              duration: Duration(milliseconds: 800),
+              duration: const Duration(milliseconds: 800),
               animationType: AnimationTypes.fade,
               curve: Curves.linear,
               child: ClipRRect(
@@ -66,10 +65,10 @@ class _OnboardingState extends State<Onboarding> {
                     width: 292.r,
                   path: imagePath,
                   sourceType: ImageType.network,
-                  fit: BoxFit.contain
+                  fit: BoxFit.contain,
 
                             ),
-              )
+              ),
           ),
         ).padTop(114.r).padH(60.r).padBottom(63.r),
         CustomWidgets.customText(
@@ -95,7 +94,7 @@ class _OnboardingState extends State<Onboarding> {
       children: List.generate(
         Onboarding._onboardingData.length,
             (index) => AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           margin: EdgeInsets.symmetric(horizontal: 4.r),
           height: 10.r,
           width: 10.r,
@@ -122,24 +121,22 @@ class _OnboardingState extends State<Onboarding> {
             children: [
               Expanded(
                   child: PageView.builder(
-
                     padEnds: false,
-                    pageSnapping: true,
                     controller: _controller,
                     itemCount: Onboarding._onboardingData.length,
                     onPageChanged: (index) {
                       context.read<OnboardingBloc>().add(
-                          PageChangedEvent(index));
+                          PageChangedEvent(index),);
                     },
                     itemBuilder: (context, index) {
                       final data = Onboarding._onboardingData[index];
                       return _buildPage(
                         title: data.title,
                         subtitle: data.subTitle,
-                        imagePath: data.imagePath
+                        imagePath: data.imagePath,
                       );
                     },
-                  )
+                  ),
               ),
                     _buildPageIndicator(state.currentPage),
 
@@ -152,26 +149,26 @@ class _OnboardingState extends State<Onboarding> {
                 onTap: (){
                   if(state.currentPage!=2){
                     logger.i('Current Page : ${state.currentPage+1}');
-                    _controller.animateToPage(state.currentPage+1, duration: Duration(milliseconds: 500), curve:Curves.easeInOut);
+                    _controller.animateToPage(state.currentPage+1, duration: const Duration(milliseconds: 500), curve:Curves.easeInOut);
                   }
                   if(state.currentPage==2){
                     logger.i('Pushing Login Screen');
-                    getIt<AppRouter>().pushReplacement(LoginScreen());
+                    getIt<AppRouter>().pushReplacement<dynamic>(const LoginScreen());
                   }
-                }
+                },
               )
                   .padH(24.r)
                   .padBottom(16.r),
               GestureDetector(
                   onTap: (){
                     logger.i(' User Skip');
-                    _controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+                    _controller.animateToPage(2, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
 
                   },
-                  child: CustomWidgets.customText(data: state.currentPage<2?AppStrings.skip:'',style: BaseStyle.s16w500.c(AppColors.hex6469)).padBottom(40.r))
+                  child: CustomWidgets.customText(data: state.currentPage<2?AppStrings.skip:'',style: BaseStyle.s16w500.c(AppColors.hex6469)).padBottom(40.r),),
             ],
           );
-        }
+        },
       ),
     );
   }
@@ -179,13 +176,13 @@ class _OnboardingState extends State<Onboarding> {
 
 
 class OnboardingModel {
-  final String title;
-  final String subTitle;
-  final String? imagePath;
   OnboardingModel({
     required this.title,
     required this.subTitle,
     this.imagePath,
   }
       );
+  final String title;
+  final String subTitle;
+  final String? imagePath;
 }

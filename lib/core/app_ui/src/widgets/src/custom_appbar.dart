@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget? leading;
-  final Widget? title;
-  final Color? bgColor;
-  final bool isCenterTitle;
-  final double bottomOpacity;
-  final double elevation;
-  final double scrollUnderElevation;
-  final bool autoImplyLeading;
-  final double? height;
-  final List<Widget>? actions;
 
   const CustomAppbar({
     super.key,
@@ -25,6 +15,16 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     this.height,
     this.actions,
   });
+  final Widget? leading;
+  final Widget? title;
+  final Color? bgColor;
+  final bool isCenterTitle;
+  final double bottomOpacity;
+  final double elevation;
+  final double scrollUnderElevation;
+  final bool autoImplyLeading;
+  final double? height;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {

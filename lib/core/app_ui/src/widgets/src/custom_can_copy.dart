@@ -2,9 +2,9 @@ import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 
 class CustomCanCopy extends StatelessWidget {
-  final String text;
 
   const CustomCanCopy({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class CustomCanCopy extends StatelessWidget {
       },
       border: Border.all(color: AppColors.hex3234),
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: CustomWidgets.customText(
         data: text,
         textAlign: TextAlign.center,

@@ -1,14 +1,7 @@
+import 'package:coffe_ui/core/models/models.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/models.dart';
-
 class CustomFloatingButton extends StatelessWidget {
-  final String? label;
-  final VoidCallback? onTap;
-  final Color? backgroundColor;
-  final String? toolTip;
-  final Widget? child;
-  final FabType type;
 
   const CustomFloatingButton({
     super.key,
@@ -19,6 +12,12 @@ class CustomFloatingButton extends StatelessWidget {
     this.child,
     this.type = FabType.normal,
   });
+  final String? label;
+  final VoidCallback? onTap;
+  final Color? backgroundColor;
+  final String? toolTip;
+  final Widget? child;
+  final FabType type;
 
   @override
   Widget build(BuildContext context) {

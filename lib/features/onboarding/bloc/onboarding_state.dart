@@ -1,4 +1,4 @@
 class OnboardingState {
-  final int currentPage;
   OnboardingState({required this.currentPage});
+  final int currentPage;
 }

@@ -1,5 +1,5 @@
 
-import '../../app_ui.dart';
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {

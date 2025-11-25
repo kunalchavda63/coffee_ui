@@ -1,8 +1,8 @@
 import 'dart:developer';
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<bool> takeLocationPermission() async {
@@ -16,7 +16,7 @@ Future<bool> takeLocationPermission() async {
   }
   if (permission == LocationPermission.deniedForever) {
     log(
-      'Location Permission PErmanently denied. Please enable from app settings',
+      'Location Permission Permanently denied. Please enable from app settings',
     );
     return false;
   }
@@ -30,7 +30,7 @@ Future<bool> takeLocationPermission() async {
 }
 
 Future<Position> determinePosition() async {
-  bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  final bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
   debugPrint('✅ Location service enabled: $serviceEnabled');
 
   if (!serviceEnabled) {
@@ -75,7 +75,7 @@ void copyToClipboard(String text) {
 
 Future<void> launchUri(String uri) async {
   final Uri url = Uri.parse(uri);
-  final bool canLaunch = await launchUrl(url, mode: LaunchMode.platformDefault);
+  final bool canLaunch = await launchUrl(url);
 
   if (!canLaunch) {
     throw Exception('Could not launch $uri');
@@ -111,7 +111,7 @@ void setStatusBarDarkStyle() {
 
 void setStatusBarLightStyle() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: AppColors.transparent,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light,

@@ -2,15 +2,6 @@ import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckBox extends StatelessWidget {
-  final bool val;
-  final Border? border;
-  final Color? color;
-  final double? boxH;
-  final double? boxW;
-  final BorderRadius? borderRadius;
-  final Color? iconColor;
-  final double? iconSize;
-  final VoidCallback? onTap;
 
   const CustomCheckBox({
     super.key,
@@ -24,6 +15,15 @@ class CustomCheckBox extends StatelessWidget {
     this.iconColor,
     this.iconSize,
   });
+  final bool val;
+  final Border? border;
+  final Color? color;
+  final double? boxH;
+  final double? boxW;
+  final BorderRadius? borderRadius;
+  final Color? iconColor;
+  final double? iconSize;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

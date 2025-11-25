@@ -21,11 +21,7 @@ void printPrettyLog(String message) {
 
 final logger = Logger(
   printer: PrettyPrinter(
-    methodCount: 2,
-    errorMethodCount: 8,
     lineLength: 400,
-    colors: true,
-    printEmojis: true,
     dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
@@ -44,7 +40,7 @@ String _prettyJson(dynamic data) {
   if (data is Map || data is List) {
     try {
       return const JsonEncoder.withIndent('  ').convert(data);
-    } catch (_) {
+    } on Exception catch (_) {
       return data.toString();
     }
   }

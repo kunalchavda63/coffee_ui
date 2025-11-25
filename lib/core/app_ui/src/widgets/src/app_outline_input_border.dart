@@ -91,7 +91,7 @@ class OutlinedInputBorder extends InputBorder {
       ..addRRect(borderRadius
           .resolve(textDirection)
           .toRRect(rect)
-          .deflate(borderSide.width));
+          .deflate(borderSide.width),);
   }
 
   @override
@@ -101,7 +101,7 @@ class OutlinedInputBorder extends InputBorder {
 
   @override
   void paintInterior(Canvas canvas, Rect rect, Paint paint,
-      {TextDirection? textDirection}) {
+      {TextDirection? textDirection,}) {
     canvas.drawRRect(borderRadius.resolve(textDirection).toRRect(rect), paint);
   }
 

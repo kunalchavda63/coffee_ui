@@ -2,14 +2,14 @@ import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalPreferences {
-  static final LocalPreferences _instance = LocalPreferences._internal();
-  late SharedPreferences _prefs;
 
   factory LocalPreferences() {
     return _instance;
   }
 
   LocalPreferences._internal();
+  static final LocalPreferences _instance = LocalPreferences._internal();
+  late SharedPreferences _prefs;
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -17,14 +17,14 @@ class LocalPreferences {
 
   Future<void> setAuth(bool value) async {
     await _prefs.setBool(PreferenceKey.isAuth, value);
-    logger.i("isAuth stored: ${_prefs.getBool(PreferenceKey.isAuth)}");
+    logger.i('isAuth stored: ${_prefs.getBool(PreferenceKey.isAuth)}');
   }
 
   bool get isAuth => _prefs.getBool(PreferenceKey.isAuth) ?? false;
 
   Future<void> setUserId(int id) async {
     await _prefs.setInt(PreferenceKey.userId, id);
-    logger.i("userId stored: ${_prefs.getInt(PreferenceKey.userId)}");
+    logger.i('userId stored: ${_prefs.getInt(PreferenceKey.userId)}');
   }
 
   int? get userId => _prefs.getInt(PreferenceKey.userId);
@@ -35,6 +35,6 @@ class LocalPreferences {
 }
 
 class PreferenceKey {
-  static const String isAuth = "isAuth";
-  static const String userId = "userId"; // ✅ renamed
+  static const String isAuth = 'isAuth';
+  static const String userId = 'userId'; // ✅ renamed
 }

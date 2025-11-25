@@ -1,4 +1,4 @@
-import '../../../app_ui/app_ui.dart';
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class AppRouter {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

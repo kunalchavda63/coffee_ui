@@ -2,24 +2,6 @@ import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 class CustomContainer extends StatelessWidget {
-  final double? h;
-  final double? w;
-  final Widget? child;
-  final EdgeInsets? padding;
-  final EdgeInsets? margin;
-  final BoxConstraints? constraints;
-  final BorderRadius? borderRadius;
-  final Border? border;
-  final VoidCallback? onTap;
-  final Color? color;
-  final List<BoxShadow>? boxShadow;
-  final Alignment? alignment;
-  final BoxShape? boxShape;
-  final BlendMode? blendMode;
-  final Clip? clipBehaviour;
-  final String? path;
-  final Gradient? gradient;
-  final BoxDecoration? foregroundDecoration;
 
 
 
@@ -42,8 +24,26 @@ class CustomContainer extends StatelessWidget {
     this.constraints,
     this.margin,
     this.gradient,
-    this.foregroundDecoration
+    this.foregroundDecoration,
   });
+  final double? h;
+  final double? w;
+  final Widget? child;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
+  final BoxConstraints? constraints;
+  final BorderRadius? borderRadius;
+  final Border? border;
+  final VoidCallback? onTap;
+  final Color? color;
+  final List<BoxShadow>? boxShadow;
+  final Alignment? alignment;
+  final BoxShape? boxShape;
+  final BlendMode? blendMode;
+  final Clip? clipBehaviour;
+  final String? path;
+  final Gradient? gradient;
+  final BoxDecoration? foregroundDecoration;
 
   @override
   Widget build(BuildContext context) {

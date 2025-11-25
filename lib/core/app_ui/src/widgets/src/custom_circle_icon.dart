@@ -1,15 +1,6 @@
-import '../../../app_ui.dart';
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class CustomCircleIcon extends StatelessWidget {
-  final double? h;
-  final double? w;
-  final Border? border;
-  final Color? bgColor;
-  final IconData iconData;
-  final double? iconSize;
-  final Color? iconColor;
-  final VoidCallback? onTap;
-  final EdgeInsets? padding;
 
   const CustomCircleIcon({
     super.key,
@@ -22,6 +13,15 @@ class CustomCircleIcon extends StatelessWidget {
     this.bgColor,
     this.onTap, this.padding,
   });
+  final double? h;
+  final double? w;
+  final Border? border;
+  final Color? bgColor;
+  final IconData iconData;
+  final double? iconSize;
+  final Color? iconColor;
+  final VoidCallback? onTap;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {

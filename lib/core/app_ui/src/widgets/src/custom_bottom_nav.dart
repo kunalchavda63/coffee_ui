@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:coffe_ui/core/models/models.dart';
+
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class CustomBottomNav extends StatelessWidget {
-  final List<BottomNavModel> bottomNavList;
-  final int currentIndex;
-  final ValueChanged<int>? onTap;
 
   const CustomBottomNav({
     super.key,
@@ -12,6 +9,9 @@ class CustomBottomNav extends StatelessWidget {
     this.currentIndex = 0,
     this.onTap,
   });
+  final List<BottomNavModel> bottomNavList;
+  final int currentIndex;
+  final ValueChanged<int>? onTap;
 
   @override
   Widget build(BuildContext context) {

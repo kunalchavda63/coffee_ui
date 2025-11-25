@@ -12,7 +12,7 @@ class AppStrings {
   static const String rememberMe = 'Remember me';
   static const String forgotPassword = 'Forgot Password';
   static const String doNotHaveAnAccount = "Don't have an account?";
-  static const String or = "Or";
+  static const String or = 'Or';
   static const String sendCode = 'Send Code';
   static const String verification = 'Verification';
   static const String weHaveSentCode = 'We have sent a code to your email';
@@ -24,9 +24,9 @@ class AppStrings {
   static const String signUp = 'Sign Up';
   static const String pleaseSignUpToGetStarted = 'Please sign up to get started';
   static const String name = 'Name';
-  static const String reTypePassword = "Re-type password";
-  static const String accessLocation = "Access Location";
-  static const String foodWillAccessYourLocation = "FOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP";
+  static const String reTypePassword = 'Re-type password';
+  static const String accessLocation = 'Access Location';
+  static const String foodWillAccessYourLocation = 'FOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP';
   static const String deliverTo = 'Deliver to';
   static const String hey = 'Hey';
   static const String goodAfternoon = 'Good Afternoon';

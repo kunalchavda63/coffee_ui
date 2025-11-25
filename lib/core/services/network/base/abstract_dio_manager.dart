@@ -2,10 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 class ApiResponse<T> {
-  final T? data;
-  final String? message;
-  final bool success;
-  final int? statusCode;
 
   ApiResponse({
     this.data,
@@ -21,14 +17,18 @@ class ApiResponse<T> {
   factory ApiResponse.error(String message) {
     return ApiResponse<T>(message: message, success: false);
   }
+  final T? data;
+  final String? message;
+  final bool success;
+  final int? statusCode;
 }
 
 class HttpMethod {
-  static final HttpMethod _instance = HttpMethod._internal();
 
   factory HttpMethod() => _instance;
 
   HttpMethod._internal();
+  static final HttpMethod _instance = HttpMethod._internal();
 
   final String baseUrl = 'https://jsonplaceholder.typicode.com/';
 
@@ -47,14 +47,14 @@ class HttpMethod {
       T Function(dynamic json) fromJson,
       ) async {
     try {
-      final response = await _dio.get(endpoint);
+      final response = await _dio.get<dynamic>(endpoint);
       debugPrint(response.data.toString());
       if (response.statusCode == 200) {
         return ApiResponse.success(fromJson(response.data));
       } else {
         return ApiResponse.error('GET failed: ${response.statusCode}');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       return ApiResponse.error('GET exception: $e');
     }
   }
@@ -65,13 +65,13 @@ class HttpMethod {
       T Function(dynamic json) fromJson,
       ) async {
     try {
-      final response = await _dio.post(endpoint, data: body);
+      final response = await _dio.post<dynamic>(endpoint, data: body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return ApiResponse.success(fromJson(response.data));
       } else {
         return ApiResponse.error('POST failed: ${response.statusCode}');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       return ApiResponse.error('POST exception: $e');
     }
   }
@@ -82,13 +82,13 @@ class HttpMethod {
       T Function(dynamic json) fromJson,
       ) async {
     try {
-      final response = await _dio.put(endpoint, data: body);
+      final response = await _dio.put<dynamic>(endpoint, data: body);
       if (response.statusCode == 200) {
         return ApiResponse.success(fromJson(response.data));
       } else {
         return ApiResponse.error('PUT failed: ${response.statusCode}');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       return ApiResponse.error('PUT exception: $e');
     }
   }
@@ -98,13 +98,13 @@ class HttpMethod {
       T Function(dynamic json) fromJson,
       ) async {
     try {
-      final response = await _dio.delete(endpoint);
+      final response = await _dio.delete<dynamic>(endpoint);
       if (response.statusCode == 200 || response.statusCode == 204) {
         return ApiResponse.success(fromJson(response.data));
       } else {
         return ApiResponse.error('DELETE failed: ${response.statusCode}');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       return ApiResponse.error('DELETE exception: $e');
     }
   }

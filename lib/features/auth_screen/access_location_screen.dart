@@ -2,10 +2,9 @@ import 'dart:developer';
 
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
+import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/screens/home_screens.dart';
-
-import '../../core/services/repositories/service_locator.dart';
 
 class AccessLocationScreen extends StatelessWidget {
   const AccessLocationScreen({super.key});
@@ -24,15 +23,15 @@ class AccessLocationScreen extends StatelessWidget {
               w: 206.r,
               borderRadius: BorderRadius.circular(90.r),
               child: CustomWidgets.customAnimationWrapper(
-                duration: Duration(milliseconds: 800),
+                duration: const Duration(milliseconds: 800),
                 animationType: AnimationTypes.fade,
                 curve: Curves.decelerate,
                 child: CustomWidgets.customImageView(
                   path: 'https://img.freepik.com/premium-vector/address-concept-illustration_86047-265.jpg?w=996',
                   sourceType: ImageType.network,
-                  fit: BoxFit.cover
-                )
-              )
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ).padBottom(93.5),
           CustomWidgets.customButton(
@@ -45,9 +44,9 @@ class AccessLocationScreen extends StatelessWidget {
           final position = await determinePosition();
           final places = await getListPlace(position);
           log(places.toString());
-          getIt<AppRouter>().pushReplacement(HomeScreens());
+          getIt<AppRouter>().pushReplacement<dynamic>(const HomeScreens());
 
-          } catch(e,s){
+          } on Exception catch(e,s){
             logger.e(e);
             logger.e(s);
           }
@@ -66,8 +65,8 @@ class AccessLocationScreen extends StatelessWidget {
           CustomWidgets.customText(
             textAlign: TextAlign.center,
             data: AppStrings.foodWillAccessYourLocation,
-            style: BaseStyle.s16w500.c(AppColors.hex6469).w(400)
-          ).padH(26.r)
+            style: BaseStyle.s16w500.c(AppColors.hex6469).w(400),
+          ).padH(26.r),
 
 
         ],

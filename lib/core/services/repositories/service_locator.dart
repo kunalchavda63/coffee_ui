@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 
 final getIt = GetIt.instance;

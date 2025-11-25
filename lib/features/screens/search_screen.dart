@@ -1,11 +1,11 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/back_button.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/screens/food_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../core/app_ui/src/widgets/src/food_widget/back_button.dart';
 
 
 class SearchScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   final List<String> recentKeyword = [
     AppStrings.burger,
     'Sandwich',
-    AppStrings.pizza
+    AppStrings.pizza,
   ];
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: AppColors.white,
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
-        leading: AppBarBackButton(),
+        leading: const AppBarBackButton(),
 
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 prefixIcon: SvgPicture.asset(AssetIcons.icSearch).padLeft(20.r).padRight(12.r),
               suffixIcon: _searchController.text.isNotEmpty?
               CustomWidgets.customAnimationWrapper(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.decelerate,
                 animationType: AnimationTypes.fade,
                 child: CustomWidgets.customCircleSvgIcon(
@@ -118,18 +118,18 @@ class _SearchScreenState extends State<SearchScreen> {
                   path: AssetIcons.icCross,
                   iconColor: AppColors.white,
                 ).padH(12.r),
-              ):SizedBox(),
+              ):const SizedBox(),
               fillColor: AppColors.hexF6f6,
               filled: true,
               border: OutlinedInputBorder(
                 borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(color: AppColors.transparent),
+                borderSide: const BorderSide(color: AppColors.transparent),
         
-              )
+              ),
             ).padH(24.r).padBottom(24.r),
             CustomWidgets.customText(
               data: AppStrings.recentKeyword,
-              style: BaseStyle.s20w400.c(AppColors.hex3234)
+              style: BaseStyle.s20w400.c(AppColors.hex3234),
             ).padH(24.r).padBottom(12.r),
             SizedBox(
               height: 46.r,
@@ -140,7 +140,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     return CustomWidgets.customContainer(
                       onTap: (){
                         logger.i('Pushing : ${getIt<AppRouter>().navigatorKey.currentWidget}');
-                        getIt<AppRouter>().push(FoodScreen());
+                        getIt<AppRouter>().push<dynamic>(const FoodScreen());
                       },
                       h: 46.r,
                       borderRadius: BorderRadius.circular(33.r),
@@ -149,8 +149,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       border:Border.all(color: AppColors.hexEded,width: 2),
                       child: CustomWidgets.customText(
                         data: recentKeyword[index],
-                        style: BaseStyle.s16w400.c(AppColors.hex181C)
-                      )
+                        style: BaseStyle.s16w400.c(AppColors.hex181C),
+                      ),
                     ).padRight(10.r);
         
                   },
@@ -158,18 +158,18 @@ class _SearchScreenState extends State<SearchScreen> {
             ).padBottom(32.r),
             CustomWidgets.customText(
               data: AppStrings.suggestRestaurants,
-              style: BaseStyle.s20w400.c(AppColors.hex3234)
+              style: BaseStyle.s20w400.c(AppColors.hex3234),
             ).padH(24.r).padBottom(20.r),
             ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
 
               shrinkWrap: true,
                 itemCount: 3,
                 itemBuilder: (context,index){
               return CustomWidgets.customContainer(
                 h: 64.r,
-                border: Border(
-                  bottom: BorderSide(color: AppColors.hexEbeb,width: 2)
+                border: const Border(
+                  bottom: BorderSide(color: AppColors.hexEbeb,width: 2),
                 ),
                 child: Row(
                   children: [
@@ -177,42 +177,42 @@ class _SearchScreenState extends State<SearchScreen> {
                       h: 50.r,
                       w: 60.r,
                       color: AppColors.hex98a8,
-                      borderRadius: BorderRadius.circular(8.r)
+                      borderRadius: BorderRadius.circular(8.r),
                     ).padRight(9.r).padBottom(14.r),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomWidgets.customText(
-                          data: 'Panis Restaturant',
-                          style: BaseStyle.s16w400.c(AppColors.hex3234)
+                          data: 'Paneer Restaurant',
+                          style: BaseStyle.s16w400.c(AppColors.hex3234),
                         ).padBottom(8.r),
                         Row(
         
                           children: [
-                            SvgPicture.asset(AssetIcons.icStart,height: 15.r,width: 15.r,fit: BoxFit.contain,).padRight(2.r),
+                            SvgPicture.asset(AssetIcons.icStart,height: 15.r,width: 15.r,).padRight(2.r),
                             CustomWidgets.customText(
                               data: '4.7',
-                              style: BaseStyle.s16w400.c(AppColors.hex181C)
-                            )
+                              style: BaseStyle.s16w400.c(AppColors.hex181C),
+                            ),
                           ],
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
-                )
+                ),
               ).padBottom(14.r);
-            }).padH(24.r).padBottom(32.r),
+            },).padH(24.r).padBottom(32.r),
             CustomWidgets.customText(
                 data: AppStrings.popularFastFood,
-                style: BaseStyle.s20w400.c(AppColors.hex3234)
+                style: BaseStyle.s20w400.c(AppColors.hex3234),
             ).padH(24.r).padBottom(20.r),
             GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: 8.r,
                 crossAxisSpacing: 8.r,
-                crossAxisCount: 2), itemBuilder:(context,index){
+                crossAxisCount: 2,), itemBuilder:(context,index){
               return CustomWidgets.customContainer(
                 h: 144.r,
                 w: MediaQuery.of(context).size.width/2,
@@ -221,17 +221,17 @@ class _SearchScreenState extends State<SearchScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.white,
-                    offset: Offset(12,12),
+                    offset: const Offset(12,12),
                     blurRadius: 30.r,
-                    spreadRadius: 0.r
+                    spreadRadius: 0.r,
                   ),
 
                   BoxShadow(
                       color: AppColors.hex969615,
-                      offset: Offset(12,12),
+                      offset: const Offset(12,12),
                       blurRadius: 30.r,
-                      spreadRadius: 0.r
-                  )
+                      spreadRadius: 0.r,
+                  ),
                 ],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -239,7 +239,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     CustomWidgets.customContainer(
                       h: 84.r,
                       color: AppColors.hex98a8,
-                      borderRadius: BorderRadius.circular(15.r)
+                      borderRadius: BorderRadius.circular(15.r),
                     ).padH(17.r).padBottom(6.r),
                     CustomWidgets.customText(
                       data: 'Buffalo Pizza',
@@ -248,17 +248,17 @@ class _SearchScreenState extends State<SearchScreen> {
                     ).padH(17.r),
                   CustomWidgets.customText(
                     data: 'Club',
-                    style: TextStyle().s(13.sp).family(FontFamily.sen).c(AppColors.hex6469)
-                  ).padH(17.r)
+                    style: const TextStyle().s(13.sp).family(FontFamily.sen).c(AppColors.hex6469),
+                  ).padH(17.r),
                   ],
-                )
+                ),
 
 
 
               );
             },
               itemCount: 4,
-            ).padH(24.r)
+            ).padH(24.r),
             
         
             
@@ -272,10 +272,10 @@ class _SearchScreenState extends State<SearchScreen> {
 }
 
 class SuggestedRestaurantModel{
+  SuggestedRestaurantModel({this.imagePath, this.name, this.rating,});
   final String? imagePath;
   final String? name;
   final double? rating;
-  SuggestedRestaurantModel({this.imagePath, this.name, this.rating,});
 
 
 }

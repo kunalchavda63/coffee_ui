@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomMaterialIcon extends StatelessWidget {
-  final IconData? icon;
-  final double? size;
-  final Color? color;
-  final double? fill;
-  final BlendMode? blendMode;
-  final String? semanticLabel;
-  final double? opticalSize;
-  final List<Shadow>? shadows;
 
   const CustomMaterialIcon({
     super.key,
@@ -21,6 +13,14 @@ class CustomMaterialIcon extends StatelessWidget {
     this.opticalSize,
     this.shadows,
   });
+  final IconData? icon;
+  final double? size;
+  final Color? color;
+  final double? fill;
+  final BlendMode? blendMode;
+  final String? semanticLabel;
+  final double? opticalSize;
+  final List<Shadow>? shadows;
 
   @override
   Widget build(BuildContext context) {

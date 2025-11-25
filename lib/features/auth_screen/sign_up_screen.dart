@@ -32,14 +32,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    logger.i("Login SCreen Dispose : CoffeUI");
+    logger.i('Login SCreen Dispose : CoffeUI');
     super.dispose();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    logger.i("Size Initialized ");
+    logger.i('Size Initialized ');
     size = MediaQuery.of(context).size;
   }
 
@@ -52,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: BlocBuilder<SignUpBloc, SignUpState>(
           builder: (context, state) {
             return state is SignUpLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : Stack(
                     children: [
                       CustomWidgets.customContainer(
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           children: [
                             CustomWidgets.customText(
                               data: AppStrings.signUp,
-                              style: TextStyle()
+                              style: const TextStyle()
                                   .s(30.sp)
                                   .w(700)
                                   .family(FontFamily.sen),
@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               opacity: 0.8,
                               child: CustomWidgets.customText(
                                 data: AppStrings.pleaseSignUpToGetStarted,
-                                style: TextStyle()
+                                style: const TextStyle()
                                     .s(16.sp)
                                     .family(FontFamily.sen),
                               ),
@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Positioned(
                         child: CustomWidgets.customAnimationWrapper(
-                          duration: Duration(seconds: 2),
+                          duration: const Duration(seconds: 2),
                           curve: Curves.easeInOut,
                           animationType: AnimationTypes.slideFromTop,
                           child: SvgPicture.asset(AssetIcons.icTopLeft),
@@ -91,12 +91,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Positioned(
                         right: 0,
                         child: CustomWidgets.customAnimationWrapper(
-                          duration: Duration(seconds: 2),
+                          duration: const Duration(seconds: 2),
                           curve: Curves.easeInOut,
                           animationType: AnimationTypes.slideFromTop,
                           child: SvgPicture.asset(
                             AssetIcons.icTopRightLine,
-                            colorFilter: ColorFilter.mode(
+                            colorFilter: const ColorFilter.mode(
                               AppColors.hexFf76,
                               BlendMode.srcIn,
                             ),
@@ -108,9 +108,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         left: 24.r,
                         child: CustomWidgets.customCircleSvgIcon(
                           onTap: () {
-                            getIt<AppRouter>().pop();
+                            getIt<AppRouter>().pop<dynamic>();
                             logger.i(
-                              "Popping : ${getIt<AppRouter>().navigatorKey.currentState}",
+                              'Popping : ${getIt<AppRouter>().navigatorKey.currentState}',
                             );
                           },
                           h: 45.r,
@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Positioned.fill(
                         top: size.height / 3.2, // Adjust based on design
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: AppColors.white,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(24),
@@ -182,7 +182,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 CustomWidgets.customButton(
                                   onTap: () {
                                     if (_form.currentState!.validate()) {
-                                      logger.i("Pushing Home Screen");
+                                      logger.i('Pushing Home Screen');
                                       context.read<SignUpBloc>().add(
                                         SignUpSubmitted(
                                           userModel: UserModel(
@@ -236,20 +236,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
           fillColor: AppColors.hexF0f5,
           filled: true,
           obscureText: toggle,
-          style: TextStyle()
+          style: const TextStyle()
               .s(14.sp)
               .w(400)
               .c(AppColors.hex3234)
               .family(FontFamily.sen),
           hintText: hintText ?? 'example@gmail.com',
-          hintStyle: TextStyle()
+          hintStyle: const TextStyle()
               .s(14.sp)
               .family(FontFamily.sen)
               .w(400)
               .c(AppColors.hexA0a5),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(color: AppColors.transparent),
+            borderSide: const BorderSide(color: AppColors.transparent),
           ),
           textInputType: textInputType,
           textInputAction: textInputAction,

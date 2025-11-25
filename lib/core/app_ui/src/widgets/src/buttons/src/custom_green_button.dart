@@ -1,15 +1,15 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class CustomGreenButton extends StatelessWidget {
+
+  const CustomGreenButton({super.key, this.text, this.onTap, this.style});
   final String? text;
   final VoidCallback? onTap;
   final TextStyle? style;
 
-  const CustomGreenButton({super.key, this.text, this.onTap, this.style});
-
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width;
+    final double size = MediaQuery.of(context).size.width;
     return CustomWidgets.customContainer(
       onTap: onTap,
       h: 49,

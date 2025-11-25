@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
-  final String data;
-  final TextStyle? style;
-  final TextOverflow? overflow;
-  final StrutStyle? strutStyle;
-  final TextAlign? textAlign;
-  final TextDecoration? textDecoration;
-  final Locale? locale;
-  final bool? softWrap;
-  final double? textScaleFactor;
-  final TextScaler? textScaler;
-  final int? maxLines;
-  final String? semanticsLabel;
-  final String? semanticsIdentifier;
-  final TextWidthBasis? textWidthBasis;
-  final TextHeightBehavior? textHeightBehavior;
-  final Color? selectionColor;
-  final TextDirection? textDirection;
 
   const CustomText({
     super.key,
@@ -39,6 +22,23 @@ class CustomText extends StatelessWidget {
     this.selectionColor,
     this.textDirection,
   });
+  final String data;
+  final TextStyle? style;
+  final TextOverflow? overflow;
+  final StrutStyle? strutStyle;
+  final TextAlign? textAlign;
+  final TextDecoration? textDecoration;
+  final Locale? locale;
+  final bool? softWrap;
+  final double? textScaleFactor;
+  final TextScaler? textScaler;
+  final int? maxLines;
+  final String? semanticsLabel;
+  final String? semanticsIdentifier;
+  final TextWidthBasis? textWidthBasis;
+  final TextHeightBehavior? textHeightBehavior;
+  final Color? selectionColor;
+  final TextDirection? textDirection;
 
   @override
   Widget build(BuildContext context) {

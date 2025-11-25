@@ -1,13 +1,12 @@
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/back_button.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/food_item_card.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
+import 'package:coffe_ui/core/utilities/utils.dart';
 import 'package:coffe_ui/features/screens/restaturant_view.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../core/app_ui/app_ui.dart';
-import '../../core/utilities/utils.dart';
 
 class FoodScreen extends StatelessWidget {
   const FoodScreen({super.key});
@@ -18,7 +17,7 @@ class FoodScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: CustomWidgets.customAppBar(
         bgColor: AppColors.white,
-        leading: AppBarBackButton(),
+        leading: const AppBarBackButton(),
         title: Row(
           children: [
             CustomWidgets.customContainer(
@@ -31,27 +30,27 @@ class FoodScreen extends StatelessWidget {
                 children: [
                   CustomWidgets.customText(
                     data: AppStrings.burger.toUpperCase(),
-                    style: TextStyle().s(12.sp).c(AppColors.hex181C).w(700).family(FontFamily.sen)
+                    style: const TextStyle().s(12.sp).c(AppColors.hex181C).w(700).family(FontFamily.sen),
                   ).padRight(7.r),
-                  SvgPicture.asset(AssetIcons.icBottomTriangle,colorFilter: ColorFilter.mode(AppColors.hexF58d, BlendMode.srcIn),),
+                  SvgPicture.asset(AssetIcons.icBottomTriangle,colorFilter: const ColorFilter.mode(AppColors.hexF58d, BlendMode.srcIn),),
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             CustomWidgets.customCircleSvgIcon(
               path: AssetIcons.icSearch,
               iconColor: AppColors.white,
               bgColor: AppColors.hex1212,
-              padding: EdgeInsets.all(15.r)
+              padding: EdgeInsets.all(15.r),
             ).padRight(10.r),
             CustomWidgets.customCircleSvgIcon(
               path: AssetIcons.icFilter,
               bgColor: AppColors.hexEcf0,
-                padding: EdgeInsets.all(15.r)
-            )
+                padding: EdgeInsets.all(15.r),
+            ),
 
           ],
-        )
+        ),
 
       ),
       body: SingleChildScrollView(
@@ -59,36 +58,36 @@ class FoodScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 0.77,
                 crossAxisCount: 2,
                   mainAxisSpacing: 21.r,
-                  crossAxisSpacing: 21.r
+                  crossAxisSpacing: 21.r,
                 ),
                 itemCount: 4,
         
                 itemBuilder:(context,index){
         
-              return FoodItemCard();
-                }).padBottom(32.r),
+              return const FoodItemCard();
+                },).padBottom(32.r),
             CustomWidgets.customText(
               data: AppStrings.openRestaurants,
-              style: BaseStyle.s20w400.c(AppColors.hex3234)
+              style: BaseStyle.s20w400.c(AppColors.hex3234),
             ).padBottom(16.r),
             ListView.builder(
               shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context,index){
               return GestureDetector(
                   onTap: (){
-                    getIt<AppRouter>().push(RestaturantView());
+                    getIt<AppRouter>().push<dynamic>(const RestaurantView());
                   },
-                  child: RestaurantPost().padBottom(28.r));
-            }
-            )
+                  child: const RestaurantPost().padBottom(28.r),);
+            },
+            ),
         
           ],
         ).padH(24.r),

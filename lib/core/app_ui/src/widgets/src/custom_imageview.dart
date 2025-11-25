@@ -4,11 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 
 class CustomImageView extends StatelessWidget {
-  final String path;
-  final ImageType sourceType;
-  final double? height;
-  final double? width;
-  final BoxFit? fit;
 
   const CustomImageView({
     super.key,
@@ -18,6 +13,11 @@ class CustomImageView extends StatelessWidget {
     this.width,
     this.fit,
   });
+  final String path;
+  final ImageType sourceType;
+  final double? height;
+  final double? width;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class CustomImageView extends StatelessWidget {
                 child: CircularProgressIndicator(
                   value: progressValue,
                   strokeWidth: 3,
-                  valueColor: AlwaysStoppedAnimation(AppColors.hex3234),
+                  valueColor: const AlwaysStoppedAnimation(AppColors.hex3234),
                 ),
               ),
             );
@@ -62,7 +62,7 @@ class CustomImageView extends StatelessWidget {
               path: AssetImages.imgError,
               height: height,
               width: width,
-              fit: BoxFit.cover
+              fit: BoxFit.cover,
             );
           },
         );
@@ -74,9 +74,9 @@ class CustomImageView extends StatelessWidget {
 }
 
 class _AnimatedImageWrapper extends StatefulWidget {
-  final Widget image;
 
   const _AnimatedImageWrapper({required this.image});
+  final Widget image;
 
   @override
   State<_AnimatedImageWrapper> createState() => _AnimatedImageWrapperState();

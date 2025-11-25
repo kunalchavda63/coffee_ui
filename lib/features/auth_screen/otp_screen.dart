@@ -19,14 +19,14 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void dispose() {
-    logger.i("Otp Screen Dispose : CoffeUI");
+    logger.i('Otp Screen Dispose : CoffeUI');
     super.dispose();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    logger.i("Size Initialized ");
+    logger.i('Size Initialized ');
     size = MediaQuery.of(context).size;
   }
   @override
@@ -43,49 +43,49 @@ class _OtpScreenState extends State<OtpScreen> {
                 children: [
                   CustomWidgets.customText(
                       data: AppStrings.verification,
-                      style: TextStyle().s(30.sp).w(700).family(FontFamily.sen)
+                      style: const TextStyle().s(30.sp).w(700).family(FontFamily.sen),
                   ).padTop(118.r),
                   Opacity(
                     opacity: 0.8,
                     child: CustomWidgets.customText(
                         data: AppStrings.weHaveSentCode,
-                        style: TextStyle().s(16.sp).family(FontFamily.sen)
+                        style: const TextStyle().s(16.sp).family(FontFamily.sen),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
           ),
           Positioned(
               child: CustomWidgets.customAnimationWrapper(
-                duration: Duration(
-                    seconds: 2
+                duration: const Duration(
+                    seconds: 2,
                 ),
                 curve: Curves.easeInOut,
                 animationType: AnimationTypes.slideFromTop,
                 child: SvgPicture.asset(
-                    AssetIcons.icTopLeft
+                    AssetIcons.icTopLeft,
                 ),
-              )),
+              ),),
           Positioned(
               right: 0,
               child: CustomWidgets.customAnimationWrapper(
-                duration: Duration(
-                    seconds: 2
+                duration: const Duration(
+                    seconds: 2,
                 ),
                 curve: Curves.easeInOut,
                 animationType: AnimationTypes.slideFromTop,
                 child: SvgPicture.asset(
                   AssetIcons.icTopRightLine,
-                  colorFilter: ColorFilter.mode(AppColors.hexFf76,BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(AppColors.hexFf76,BlendMode.srcIn),
                 ),
-              )),
+              ),),
           Positioned(
               top: 50.r,
               left: 24.r,
               child: CustomWidgets.customCircleSvgIcon(
                 onTap: (){
-                  getIt<AppRouter>().pop();
-                  logger.i("Popping : ${getIt<AppRouter>().navigatorKey.currentWidget}");
+                  getIt<AppRouter>().pop<dynamic>();
+                  logger.i('Popping : ${getIt<AppRouter>().navigatorKey.currentWidget}');
                 },
                 h: 45.r,
                 w: 45.r,
@@ -94,7 +94,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 path: AssetIcons.icBack,
                 bgColor: AppColors.white,
                 iconColor: AppColors.hex5e61,
-              )),
+              ),),
 
           Positioned(
               bottom: 0,
@@ -102,7 +102,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   h: size.height/1.4,
                   w: size.width,
                   color: AppColors.white,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
                   ),
@@ -114,19 +114,19 @@ class _OtpScreenState extends State<OtpScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomWidgets.customText(data: AppStrings.code.toUpperCase(),style:BaseStyle.s11w700.c(AppColors.black).family(FontFamily.sen)).padBottom(8.r),
-                          Spacer(),
+                          const Spacer(),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomWidgets.customText(
                                 data: AppStrings.resend,
-                                style: BaseStyle.s14w500.c(AppColors.black).w(700).line(0.8)
+                                style: BaseStyle.s14w500.c(AppColors.black).w(700).line(0.8),
                               ).padBottom(2.r),
                               CustomWidgets.customContainer(
                                 h: 2,
                                 w: 50,
-                                color: AppColors.black
-                              )
+                                color: AppColors.black,
+                              ),
 
 
                             ],
@@ -140,9 +140,9 @@ class _OtpScreenState extends State<OtpScreen> {
                         enableActiveFill: true,
                         animationType: AnimationType.fade,
                         animationCurve: Curves.linear,
-                        animationDuration: Duration(milliseconds: 200),
+                        animationDuration: const Duration(milliseconds: 200),
                         keyboardType: TextInputType.number,
-                        textStyle: TextStyle().s(18.sp).c(AppColors.hex3234).w(700).family(FontFamily.sen),
+                        textStyle: const TextStyle().s(18.sp).c(AppColors.hex3234).w(700).family(FontFamily.sen),
                         pinTheme: PinTheme(
 
                           fieldHeight:57.r,
@@ -166,8 +166,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         label: AppStrings.verify.toUpperCase(),
                       ),
                     ],
-                  ).padTop(24.r).padH(24.r)
-              )
+                  ).padTop(24.r).padH(24.r),
+              ),
           ),
 
         ],

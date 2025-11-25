@@ -1,9 +1,9 @@
-import '../app_ui.dart';
-
-import '../../models/src/pop_up_model.dart';
 
 // Extension on FontFamily for shorthand styling
-extension FontFamilyExtension on FontFamily {
+
+import 'package:coffe_ui/core/app_ui/app_ui.dart';
+import 'package:coffe_ui/core/models/src/pop_up_model.dart';extension FontFamilyExtension on FontFamily {
+
   String get name {
     switch (this) {
       case FontFamily.sen:
