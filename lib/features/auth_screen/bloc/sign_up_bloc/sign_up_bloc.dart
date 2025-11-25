@@ -1,5 +1,6 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
+import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/network/base/abstract_dio_manager.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
@@ -26,11 +27,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       final response = await authRepository.createAccount(event.userModel);
       if (response.success) {
         final data = response.data?['user_id'];
-        final ApiResponse<UserModel> user =
-            await authRepository.getUserData(data as int);
+        final ApiResponse<UserModel> user = await authRepository.getUserData(data as int);
         if (user.success && user.data != null) {
           getIt<AppRouter>().pushReplacement<dynamic>(HomeScreens(userModel: user.data));
           logger.i(user.data?.toJson());
+          await LocalPreferences().setAuth(true);
+          await LocalPreferences().setUserId(data);
         } else {
           logger.i(user.message);
         }

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
@@ -17,45 +16,53 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
-    Future.microtask(() async {
-      final auth = LocalPreferences().isAuth;
-
-      navigateNext(auth);
-
-    });
+    _checkAuth();
   }
 
+  void _checkAuth() async {
+    // Wait for 200ms to ensure SharedPreferences is ready
+    await Future<void>.delayed(const Duration(milliseconds: 200));
+
+    final bool auth = LocalPreferences().isAuth;
+    logger.i('User is $auth');
+
+    navigateNext(auth);
+  }
+
+  Future<void> navigateNext(bool isAuth) async {
+    await Future<void>.delayed(const Duration(seconds: 2)); // splash animation
+
+    if (isAuth) {
+      final int? userId = LocalPreferences().userId;
+
+      if (userId == null) {
+        getIt<AppRouter>().pushReplacement<void>(const Onboarding());
+        return;
+      }
+
+      final response = await getIt<AuthRepository>().getUserData(userId);
+
+      if (response.success && response.data != null) {
+        getIt<AppRouter>().pushReplacement<void>(
+          HomeScreens(userModel: response.data),
+        );
+        return;
+      } else {
+        logger.e('Error: ${response.message}');
+      }
+    }
+
+    // Default fallback → Onboarding
+    getIt<AppRouter>().pushReplacement<void>(const Onboarding());
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     setStatusBarDarkStyle();
-  }
-
-  Future<void> navigateNext(bool isAuth) async{
-
-
-    if(isAuth){
-    final int? userId = LocalPreferences().userId;
-    final response = await getIt<AuthRepository>().getUserData(userId!);
-    if(response.success && response.data!=null){
-      await Future<dynamic>.delayed(const Duration(seconds: 3));
-      getIt<AppRouter>().pushReplacement<dynamic>(
-          HomeScreens(userModel: response.data),
-      );
-    }
-    else {
-      logger.i(response.message);
-    }
-
-    }
-    getIt<AppRouter>().pushReplacement<dynamic>(const Onboarding());
-
-
   }
 
 

@@ -1,6 +1,5 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/custom_check_box.dart';
-import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/navigation/src/app_router.dart';
 import 'package:coffe_ui/core/services/repositories/auth_repository.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
@@ -12,8 +11,8 @@ import 'package:coffe_ui/features/splash/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
-   LocalPreferences().init();
   runApp( MultiBlocProvider(
       providers: [
         BlocProvider<OnboardingBloc>(create:(_)=>OnboardingBloc()),

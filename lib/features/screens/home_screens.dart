@@ -1,10 +1,12 @@
 import 'package:coffe_ui/core/app_ui/app_ui.dart';
 import 'package:coffe_ui/core/app_ui/src/widgets/src/food_widget/restaurant_post.dart';
 import 'package:coffe_ui/core/models/src/user_model/user_model.dart';
+import 'package:coffe_ui/core/services/local_storage/sharedpreference_service.dart';
 import 'package:coffe_ui/core/services/navigation/router.dart';
 import 'package:coffe_ui/core/services/repositories/service_locator.dart';
 import 'package:coffe_ui/core/utilities/src/extensions/logger/logger.dart';
 import 'package:coffe_ui/core/utilities/src/strings.dart';
+import 'package:coffe_ui/features/auth_screen/login_screen.dart';
 import 'package:coffe_ui/features/screens/bloc/select_categories_bloc.dart';
 import 'package:coffe_ui/features/screens/search_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +41,7 @@ class _HomeScreensState extends State<HomeScreens> {
         leading: CustomWidgets.customCircleSvgIcon(
           path: AssetIcons.icMenu,
           bgColor: AppColors.hexEcf0,
+          
           h: 45.r,
           w: 45.r,
         ).padLeft(24.r),
@@ -223,7 +226,18 @@ class _HomeScreensState extends State<HomeScreens> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.hex1e1d.withAlpha(40),
+        shape:const CircleBorder(),
+        
+        onPressed: () async{
+          await LocalPreferences().setAuth(false);
+          getIt<AppRouter>().push<void>(const LoginScreen());
+            
+          
+        },child:const Icon(Icons.logout,color: AppColors.white),),
     );
+    
   }
   Widget categoriesWidgets({CategoriesModel? categories,bool? isSelected = false,VoidCallback? onTap}){
     return Center(
